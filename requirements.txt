@@ -1,0 +1,16 @@
+
+chromadb
+sentence-transformers
+rank-bm25
+langchain-text-splitters
+pymupdf
+beautifulsoup4
+fastapi
+uvicorn[standard]
+streamlit
+groq
+pydantic-settings
+pytest
+fastapi
+uvicorn[standard]
+python-dotenv       

@@ -1,0 +1,60 @@
+
+[
+  {
+    "id": "Q001",
+    "question": "What security setting must employees enable?",
+    "expected_answer": "Employees must enable multi-factor authentication.",
+    "relevant_text_contains": "Employees must enable multi-factor authentication.",
+    "answerable": true
+  },
+  {
+    "id": "Q002",
+    "question": "Can employees share passwords with colleagues?",
+    "expected_answer": "Passwords must never be shared with colleagues.",
+    "relevant_text_contains": "Passwords must never be shared with colleagues.",
+    "answerable": true
+  },
+  {
+    "id": "Q003",
+    "question": "How many days of paid leave do employees receive per year?",
+    "expected_answer": "Employees receive 20 days of paid leave per year.",
+    "relevant_text_contains": "Employees receive 20 days of paid leave per year.",
+    "answerable": true
+  },
+  {
+    "id": "Q004",
+    "question": "Who approves annual leave requests?",
+    "expected_answer": "The employee's manager must approve annual leave requests.",
+    "relevant_text_contains": "Annual leave requests must be approved by the employee's manager.",
+    "answerable": true
+  },
+  {
+    "id": "Q005",
+    "question": "What is the company's parental leave policy?",
+    "expected_answer": "The document does not specify a parental leave policy.",
+    "relevant_text_contains": "",
+    "answerable": false
+  },
+  {
+    "id": "Q006",
+    "question": "What is the company's password-sharing rule?",
+    "expected_answer": "Employees must never share passwords with colleagues.",
+    "relevant_text_contains": "Passwords must never be shared with colleagues.",
+    "answerable": true
+  },
+  {
+    "id": "Q007",
+    "question": "Does the company specify a parental leave duration?",
+    "expected_answer": "The document does not specify a parental leave duration.",
+    "relevant_text_contains": "",
+    "answerable": false
+  },
+  {
+    "id": "Q008",
+    "question": "What does the security policy say about authentication?",
+    "expected_answer": "Employees must enable multi-factor authentication.",
+    "relevant_text_contains": "Employees must enable multi-factor authentication.",
+    "answerable": true
+  }
+]
+    

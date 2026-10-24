@@ -1,0 +1,176 @@
+
+import json
+import re
+from pathlib import Path
+from typing import Any
+
+import chromadb
+from rank_bm25 import BM25Okapi
+from sentence_transformers import SentenceTransformer
+
+from app.config import PROCESSED_DIR, EMBEDDING_MODEL, BASE_DIR
+
+
+# All generated indexes are stored locally.
+INDEX_DIR = BASE_DIR / "data" / "indexes"
+CHROMA_DIR = INDEX_DIR / "chroma"
+BM25_PATH = INDEX_DIR / "bm25_index.json"
+
+COLLECTION_NAME = "internal_documents"
+
+INDEX_DIR.mkdir(parents=True, exist_ok=True)
+CHROMA_DIR.mkdir(parents=True, exist_ok=True)
+
+
+def tokenize(text: str) -> list[str]:
+    """Tokenize text for case-insensitive keyword retrieval."""
+    return re.findall(r"\b\w+\b", text.lower())
+
+
+def load_chunks() -> list[dict[str, Any]]:
+    """Load all processed JSON chunks and validate their IDs."""
+    chunks = []
+    seen_ids = set()
+
+    for path in sorted(PROCESSED_DIR.glob("*.json")):
+        records = json.loads(path.read_text(encoding="utf-8"))
+
+        if not isinstance(records, list):
+            raise ValueError(f"Expected a list of chunks in {path.name}")
+
+        for chunk in records:
+            required = {"id", "text", "source", "chunk_index"}
+
+            if not required.issubset(chunk):
+                raise ValueError(
+                    f"Missing required chunk fields in {path.name}"
+                )
+
+            if not chunk["text"].strip():
+                continue
+
+            chunk_id = chunk["id"]
+
+            if chunk_id in seen_ids:
+                continue
+
+            seen_ids.add(chunk_id)
+            chunks.append(chunk)
+
+    return chunks
+
+
+def build_indexes() -> None:
+    """Rebuild ChromaDB and BM25 from the same chunk collection."""
+    chunks = load_chunks()
+
+    if not chunks:
+        print("No processed chunks found.")
+        print(f"Add documents and run ingestion first: {PROCESSED_DIR}")
+        return
+
+    print(f"Loaded {len(chunks)} unique chunks.")
+
+    # 1. Generate local embeddings.
+    print(f"Loading embedding model: {EMBEDDING_MODEL}")
+    model = SentenceTransformer(EMBEDDING_MODEL)
+
+    texts = [chunk["text"] for chunk in chunks]
+
+    embeddings = model.encode(
+        texts,
+        batch_size=32,
+        normalize_embeddings=True,
+        show_progress_bar=True,
+        convert_to_numpy=True,
+    )
+
+    # 2. Rebuild ChromaDB to avoid stale or duplicate records.
+    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
+
+    try:
+        client.delete_collection(COLLECTION_NAME)
+    except Exception as exc:
+        # Only ignore the expected case where the collection is absent.
+        if "does not exist" not in str(exc).lower():
+            raise
+
+    collection = client.create_collection(
+        name=COLLECTION_NAME,
+        metadata={"hnsw:space": "cosine"},
+    )
+
+    # Chroma limits per-request batch size. Insert in manageable batches.
+    batch_size = 128
+
+    for start in range(0, len(chunks), batch_size):
+        end = min(start + batch_size, len(chunks))
+        batch = chunks[start:end]
+
+        metadata = []
+        for chunk in batch:
+            item = {
+                "source": str(chunk["source"]),
+                "chunk_index": int(chunk["chunk_index"]),
+                "chunking_strategy": str(
+                    chunk.get("chunking_strategy", "unknown")
+                ),
+                "character_count": int(
+                    chunk.get("character_count", len(chunk["text"]))
+                ),
+            }
+
+            if chunk.get("page") is not None:
+                item["page"] = int(chunk["page"])
+
+            if chunk.get("section_heading"):
+                item["section_heading"] = str(
+                    chunk["section_heading"]
+                )
+
+            metadata.append(item)
+
+        collection.add(
+            ids=[chunk["id"] for chunk in batch],
+            documents=[chunk["text"] for chunk in batch],
+            metadatas=metadata,
+            embeddings=embeddings[start:end].tolist(),
+        )
+
+    # 3. Build the sparse-search corpus from exactly the same chunks.
+    tokenized_corpus = [tokenize(text) for text in texts]
+    bm25 = BM25Okapi(tokenized_corpus)
+
+    # Store enough information to reconstruct BM25 after a restart.
+    # Scores are recalculated at query time.
+    bm25_payload = {
+        "version": 1,
+        "tokenized_corpus": tokenized_corpus,
+        "chunks": chunks,
+    }
+
+    temporary_path = BM25_PATH.with_suffix(".tmp")
+    temporary_path.write_text(
+        json.dumps(bm25_payload, ensure_ascii=False),
+        encoding="utf-8",
+    )
+    temporary_path.replace(BM25_PATH)
+
+    # Verify the stored index count.
+    stored_count = collection.count()
+
+    if stored_count != len(chunks):
+        raise RuntimeError(
+            f"Index count mismatch: expected {len(chunks)}, "
+            f"found {stored_count}"
+        )
+
+    print("\nIndexing completed successfully.")
+    print(f"ChromaDB chunks: {stored_count}")
+    print(f"BM25 chunks: {len(bm25_payload['chunks'])}")
+    print(f"ChromaDB path: {CHROMA_DIR}")
+    print(f"BM25 index: {BM25_PATH}")
+
+
+if __name__ == "__main__":
+    build_indexes()

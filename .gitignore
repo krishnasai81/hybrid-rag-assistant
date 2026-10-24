@@ -1,0 +1,23 @@
+
+# Python virtual environment
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+
+# Secrets
+.env
+.env.*
+!.env.example
+
+# Frontend dependencies and build output
+frontend/node_modules/
+frontend/dist/
+
+# Generated indexes and uploaded documents
+data/raw/
+data/processed/
+data/indexes/
+
+# Logs
+*.log

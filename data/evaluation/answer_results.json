@@ -1,0 +1,335 @@
+{
+  "summary": {
+    "total_questions": 8,
+    "answerable_questions": 6,
+    "answerable_response_rate": 1.0,
+    "unanswerable_questions": 2,
+    "abstention_rate_on_unanswerable": 1.0,
+    "average_citation_coverage": 1.0,
+    "invalid_citation_count": 0,
+    "unsupported_claim_count": 0,
+    "note": "Response rate is not answer correctness. Review generated answers against expected answers."
+  },
+  "results": [
+    {
+      "id": "Q001",
+      "question": "What security setting must employees enable?",
+      "expected_answer": "Employees must enable multi-factor authentication.",
+      "answerable": true,
+      "generated_answer": "Employees must enable multi‑factor authentication. [1]",
+      "abstained": false,
+      "sources": [
+        {
+          "citation_id": 1,
+          "source": "company_handbook.txt",
+          "page": null,
+          "chunk_index": 0,
+          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
+          "rerank_score": 4.891911506652832
+        }
+      ],
+      "verification": {
+        "checks": [
+          {
+            "claim": "Employees must enable multi‑factor authentication.",
+            "citations": [
+              1
+            ],
+            "verdict": "supported",
+            "source_checks": [
+              {
+                "citation": 1,
+                "verdict": "supported",
+                "reason": "The Security Policy explicitly states that employees must enable multi‑factor authentication."
+              }
+            ]
+          }
+        ],
+        "invalid_citations": [],
+        "factual_sentence_count": 1,
+        "verified_sentence_count": 1,
+        "citation_coverage": 1.0
+      }
+    },
+    {
+      "id": "Q002",
+      "question": "Can employees share passwords with colleagues?",
+      "expected_answer": "Passwords must never be shared with colleagues.",
+      "answerable": true,
+      "generated_answer": "Employees are not allowed to share passwords with colleagues. [1]",
+      "abstained": false,
+      "sources": [
+        {
+          "citation_id": 1,
+          "source": "company_handbook.txt",
+          "page": null,
+          "chunk_index": 0,
+          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
+          "rerank_score": 7.332226753234863
+        }
+      ],
+      "verification": {
+        "checks": [
+          {
+            "claim": "Employees are not allowed to share passwords with colleagues.",
+            "citations": [
+              1
+            ],
+            "verdict": "supported",
+            "source_checks": [
+              {
+                "citation": 1,
+                "verdict": "supported",
+                "reason": "The evidence explicitly states that passwords must never be shared with colleagues, which directly supports the claim."
+              }
+            ]
+          }
+        ],
+        "invalid_citations": [],
+        "factual_sentence_count": 1,
+        "verified_sentence_count": 1,
+        "citation_coverage": 1.0
+      }
+    },
+    {
+      "id": "Q003",
+      "question": "How many days of paid leave do employees receive per year?",
+      "expected_answer": "Employees receive 20 days of paid leave per year.",
+      "answerable": true,
+      "generated_answer": "Employees receive 20 days of paid leave per year.[1]",
+      "abstained": false,
+      "sources": [
+        {
+          "citation_id": 1,
+          "source": "company_handbook.txt",
+          "page": null,
+          "chunk_index": 0,
+          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
+          "rerank_score": 9.890344619750977
+        }
+      ],
+      "verification": {
+        "checks": [
+          {
+            "claim": "Employees receive 20 days of paid leave per year.",
+            "citations": [
+              1
+            ],
+            "verdict": "supported",
+            "source_checks": [
+              {
+                "citation": 1,
+                "verdict": "supported",
+                "reason": "The evidence explicitly states that employees receive 20 days of paid leave per year."
+              }
+            ]
+          }
+        ],
+        "invalid_citations": [],
+        "factual_sentence_count": 1,
+        "verified_sentence_count": 1,
+        "citation_coverage": 1.0
+      }
+    },
+    {
+      "id": "Q004",
+      "question": "Who approves annual leave requests?",
+      "expected_answer": "The employee's manager must approve annual leave requests.",
+      "answerable": true,
+      "generated_answer": "Annual leave requests must be approved by the employee’s manager. [1]",
+      "abstained": false,
+      "sources": [
+        {
+          "citation_id": 1,
+          "source": "company_handbook.txt",
+          "page": null,
+          "chunk_index": 0,
+          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
+          "rerank_score": 7.231811046600342
+        }
+      ],
+      "verification": {
+        "checks": [
+          {
+            "claim": "Annual leave requests must be approved by the employee’s manager.",
+            "citations": [
+              1
+            ],
+            "verdict": "supported",
+            "source_checks": [
+              {
+                "citation": 1,
+                "verdict": "supported",
+                "reason": "The Employee Leave Policy explicitly states that annual leave requests must be approved by the employee’s manager."
+              }
+            ]
+          }
+        ],
+        "invalid_citations": [],
+        "factual_sentence_count": 1,
+        "verified_sentence_count": 1,
+        "citation_coverage": 1.0
+      }
+    },
+    {
+      "id": "Q005",
+      "question": "What is the company's parental leave policy?",
+      "expected_answer": "The document does not specify a parental leave policy.",
+      "answerable": false,
+      "generated_answer": "The provided evidence does not contain any information about the company's parental leave policy. [1]",
+      "abstained": true,
+      "sources": [
+        {
+          "citation_id": 1,
+          "source": "company_handbook.txt",
+          "page": null,
+          "chunk_index": 0,
+          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
+          "rerank_score": -3.9950265884399414
+        }
+      ],
+      "verification": {
+        "checks": [
+          {
+            "claim": "The provided evidence does not contain any information about the company's parental leave policy.",
+            "citations": [
+              1
+            ],
+            "verdict": "supported",
+            "source_checks": [
+              {
+                "citation": 1,
+                "verdict": "supported",
+                "reason": "The evidence only discusses general paid leave and security policies, with no mention of a parental leave policy."
+              }
+            ]
+          }
+        ],
+        "invalid_citations": [],
+        "factual_sentence_count": 1,
+        "verified_sentence_count": 1,
+        "citation_coverage": 1.0
+      }
+    },
+    {
+      "id": "Q006",
+      "question": "What is the company's password-sharing rule?",
+      "expected_answer": "Employees must never share passwords with colleagues.",
+      "answerable": true,
+      "generated_answer": "The company’s password‑sharing rule is that passwords must never be shared with colleagues. [1]",
+      "abstained": false,
+      "sources": [
+        {
+          "citation_id": 1,
+          "source": "company_handbook.txt",
+          "page": null,
+          "chunk_index": 0,
+          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
+          "rerank_score": -2.2387354373931885
+        }
+      ],
+      "verification": {
+        "checks": [
+          {
+            "claim": "The company’s password‑sharing rule is that passwords must never be shared with colleagues.",
+            "citations": [
+              1
+            ],
+            "verdict": "supported",
+            "source_checks": [
+              {
+                "citation": 1,
+                "verdict": "supported",
+                "reason": "The Security Policy explicitly states that passwords must never be shared with colleagues, directly supporting the claim."
+              }
+            ]
+          }
+        ],
+        "invalid_citations": [],
+        "factual_sentence_count": 1,
+        "verified_sentence_count": 1,
+        "citation_coverage": 1.0
+      }
+    },
+    {
+      "id": "Q007",
+      "question": "Does the company specify a parental leave duration?",
+      "expected_answer": "The document does not specify a parental leave duration.",
+      "answerable": false,
+      "generated_answer": "The evidence does not mention a parental leave duration. [1]",
+      "abstained": true,
+      "sources": [
+        {
+          "citation_id": 1,
+          "source": "company_handbook.txt",
+          "page": null,
+          "chunk_index": 0,
+          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
+          "rerank_score": -7.710702896118164
+        }
+      ],
+      "verification": {
+        "checks": [
+          {
+            "claim": "The evidence does not mention a parental leave duration.",
+            "citations": [
+              1
+            ],
+            "verdict": "supported",
+            "source_checks": [
+              {
+                "citation": 1,
+                "verdict": "supported",
+                "reason": "Evidence does not mention parental leave."
+              }
+            ]
+          }
+        ],
+        "invalid_citations": [],
+        "factual_sentence_count": 1,
+        "verified_sentence_count": 1,
+        "citation_coverage": 1.0
+      }
+    },
+    {
+      "id": "Q008",
+      "question": "What does the security policy say about authentication?",
+      "expected_answer": "Employees must enable multi-factor authentication.",
+      "answerable": true,
+      "generated_answer": "The security policy requires employees to enable multi‑factor authentication. [1]",
+      "abstained": false,
+      "sources": [
+        {
+          "citation_id": 1,
+          "source": "company_handbook.txt",
+          "page": null,
+          "chunk_index": 0,
+          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
+          "rerank_score": -0.19479931890964508
+        }
+      ],
+      "verification": {
+        "checks": [
+          {
+            "claim": "The security policy requires employees to enable multi‑factor authentication.",
+            "citations": [
+              1
+            ],
+            "verdict": "supported",
+            "source_checks": [
+              {
+                "citation": 1,
+                "verdict": "supported",
+                "reason": "The evidence explicitly states that employees must enable multi‑factor authentication."
+              }
+            ]
+          }
+        ],
+        "invalid_citations": [],
+        "factual_sentence_count": 1,
+        "verified_sentence_count": 1,
+        "citation_coverage": 1.0
+      }
+    }
+  ]
+}
