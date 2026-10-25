@@ -261,4 +261,4 @@ The embedding model and reranker are configured in the application code. Update 
 
 ## License
 
-Choose a license before allowing others to reuse your code. For example, the MIT License permits broad reuse with attribution. Add a `LICENSE` file if you choose MIT.
+This project is licensed under the MIT License. You are free to use, copy, modify, merge, publish, distribute, sublicense, and sell copies of the software, subject to the license terms.
