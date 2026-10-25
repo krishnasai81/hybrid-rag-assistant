@@ -14,3 +14,5 @@ pytest
 fastapi
 uvicorn[standard]
 python-dotenv       
+supabase
+numpy

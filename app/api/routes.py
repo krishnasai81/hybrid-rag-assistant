@@ -6,8 +6,12 @@ from fastapi import APIRouter, File, HTTPException, UploadFile
 from starlette.concurrency import run_in_threadpool
 
 from app.config import RAW_DIR, PROCESSED_DIR
-from app.ingestion import SUPPORTED_EXTENSIONS, ingest_file
-from app.indexing import build_indexes
+from app.ingestion import (
+    SUPPORTED_EXTENSIONS,
+    ingest_file,
+    upload_original_document,
+)
+from app.indexing import index_document_chunks
 from app.retrieval import clear_retrieval_caches
 from app.schemas.chat import (
     ChatRequest,
@@ -15,10 +19,10 @@ from app.schemas.chat import (
     HealthResponse,
     UploadResponse,
 )
+from app.supabase_client import get_supabase_client, SUPABASE_BUCKET
 
 router = APIRouter()
-
-MAX_FILE_SIZE = 20 * 1024 * 1024  # 20 MB
+MAX_FILE_SIZE = 20 * 1024 * 1024
 
 
 @router.get("/health", response_model=HealthResponse)
@@ -30,26 +34,41 @@ def health_check():
 
 
 def process_uploaded_document(path: Path) -> int:
-    chunks = ingest_file(path)
+    registered = None
 
-    if not chunks:
-        raise ValueError(
-            "No readable text was found in the uploaded document."
-        )
+    try:
+        registered = upload_original_document(path)
+        document_id = registered["document_id"]
 
-    # Rebuild ChromaDB and BM25 indexes from processed documents.
-    build_indexes()
+        chunks = ingest_file(path, document_id=document_id)
+        if not chunks:
+            raise ValueError(
+                "No readable text was found in the uploaded document."
+            )
 
-    # Make subsequent questions use the newly built indexes.
-    clear_retrieval_caches()
+        index_document_chunks(document_id, chunks)
+        clear_retrieval_caches()
+        return len(chunks)
 
-    return len(chunks)
+    except Exception:
+        # Remove the document record (and its chunks) if processing fails.
+        if registered:
+            try:
+                client = get_supabase_client()
+                client.table("documents").delete().eq(
+                    "id", registered["document_id"]
+                ).execute()
+
+                client.storage.from_(SUPABASE_BUCKET).remove(
+                    [registered["storage_path"]]
+                )
+            except Exception as cleanup_error:
+                print(f"Supabase cleanup failed: {cleanup_error}")
+
+        raise
 
 
-@router.post(
-    "/documents/upload",
-    response_model=UploadResponse,
-)
+@router.post("/documents/upload", response_model=UploadResponse)
 async def upload_document(file: UploadFile = File(...)):
     if not file.filename:
         raise HTTPException(
@@ -81,12 +100,12 @@ async def upload_document(file: UploadFile = File(...)):
                 detail="The uploaded file is empty.",
             )
 
+        RAW_DIR.mkdir(parents=True, exist_ok=True)
+        PROCESSED_DIR.mkdir(parents=True, exist_ok=True)
+
         stored_name = f"{uuid4().hex}_{original_name}"
         stored_path = RAW_DIR / stored_name
-        processed_path = (
-            PROCESSED_DIR / f"{Path(stored_name).stem}.json"
-        )
-
+        processed_path = PROCESSED_DIR / f"{Path(stored_name).stem}.json"
         stored_path.write_bytes(content)
 
         try:
@@ -95,17 +114,10 @@ async def upload_document(file: UploadFile = File(...)):
                 stored_path,
             )
         except ValueError as exc:
-            stored_path.unlink(missing_ok=True)
             processed_path.unlink(missing_ok=True)
-
-            raise HTTPException(
-                status_code=422,
-                detail=str(exc),
-            ) from exc
+            raise HTTPException(status_code=422, detail=str(exc)) from exc
         except Exception as exc:
-            # Keep the underlying error in the backend terminal.
             print(f"Document processing failed: {exc}")
-
             raise HTTPException(
                 status_code=500,
                 detail=(
@@ -113,11 +125,14 @@ async def upload_document(file: UploadFile = File(...)):
                     "Check the backend terminal for details."
                 ),
             ) from exc
+        finally:
+            stored_path.unlink(missing_ok=True)
+            processed_path.unlink(missing_ok=True)
 
         return UploadResponse(
             filename=original_name,
             chunks_created=chunk_count,
-            message="Document processed and indexes rebuilt successfully.",
+            message="Document stored and indexed successfully.",
         )
     finally:
         await file.close()
@@ -134,14 +149,9 @@ async def chat(request: ChatRequest):
         )
 
     try:
-        # Import here so the API health endpoint can still start
-        # even if the Groq API key has not been configured.
         from app.generation import ask_documents
 
-        result = await run_in_threadpool(
-            ask_documents,
-            question,
-        )
+        result = await run_in_threadpool(ask_documents, question)
 
         return ChatResponse(
             question=result["question"],
@@ -149,18 +159,12 @@ async def chat(request: ChatRequest):
             sources=result.get("sources", []),
             verification=result.get("verification", {}),
         )
-
-    except HTTPException:
-        raise
     except Exception as exc:
         print(f"Chat processing failed: {exc}")
-
         raise HTTPException(
             status_code=503,
             detail=(
-                "Unable to answer the question. Check that documents "
-                "have been indexed, your Groq API key is configured, "
-                "and the backend terminal has no errors."
+                "Unable to answer the question. Check Supabase, "
+                "the Groq API key, and the backend terminal."
             ),
         ) from exc
-    

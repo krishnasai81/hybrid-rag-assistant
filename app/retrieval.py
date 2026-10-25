@@ -1,32 +1,22 @@
 
-import json
 import re
 from functools import lru_cache
-from pathlib import Path
 from typing import Any
 
-import chromadb
+import numpy as np
 from rank_bm25 import BM25Okapi
 from sentence_transformers import SentenceTransformer, CrossEncoder
 
-from app.config import BASE_DIR, EMBEDDING_MODEL
+from app.config import EMBEDDING_MODEL
+from app.supabase_client import get_supabase_client
 
-
-# ---------------- Configuration ----------------
-
-CHROMA_DIR = BASE_DIR / "data" / "indexes" / "chroma"
-BM25_PATH = BASE_DIR / "data" / "indexes" / "bm25_index.json"
-
-COLLECTION_NAME = "internal_documents"
 RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+DB_PAGE_SIZE = 500
 
 
 def tokenize(text: str) -> list[str]:
-    """Use the same tokenization approach as the indexing phase."""
     return re.findall(r"\b\w+\b", text.lower())
 
-
-# ---------------- Load persistent indexes ----------------
 
 @lru_cache(maxsize=1)
 def get_embedding_model():
@@ -34,122 +24,127 @@ def get_embedding_model():
 
 
 @lru_cache(maxsize=1)
-def get_chroma_collection():
-    if not CHROMA_DIR.exists():
-        raise RuntimeError("ChromaDB index not found. Build indexes first.")
+def get_reranker():
+    return CrossEncoder(RERANKER_MODEL, device="cpu")
 
-    client = chromadb.PersistentClient(path=str(CHROMA_DIR))
-    collection = client.get_collection(COLLECTION_NAME)
 
-    if collection.count() == 0:
-        raise RuntimeError("ChromaDB collection is empty.")
+def load_all_chunks() -> list[dict[str, Any]]:
+    """Load the persisted chunk corpus in pages for BM25."""
+    client = get_supabase_client()
+    chunks = []
+    start = 0
 
-    return collection
+    while True:
+        response = (
+            client.table("document_chunks")
+            .select(
+                "id,document_id,content,chunk_index,page,metadata"
+            )
+            .order("id")
+            .range(start, start + DB_PAGE_SIZE - 1)
+            .execute()
+        )
+
+        batch = response.data or []
+        if not batch:
+            break
+
+        for row in batch:
+            metadata = row.get("metadata") or {}
+            metadata = dict(metadata)
+            metadata.setdefault("chunk_index", row["chunk_index"])
+            metadata.setdefault("page", row.get("page"))
+
+            chunks.append({
+                "id": row["id"],
+                "document_id": row["document_id"],
+                "text": row["content"],
+                "metadata": metadata,
+            })
+
+        if len(batch) < DB_PAGE_SIZE:
+            break
+
+        start += len(batch)
+
+    return chunks
 
 
 @lru_cache(maxsize=1)
 def get_bm25_data():
-    if not BM25_PATH.exists():
-        raise RuntimeError("BM25 index not found. Build indexes first.")
+    chunks = load_all_chunks()
+    if not chunks:
+        raise RuntimeError(
+            "No document chunks found in Supabase. Upload a document first."
+        )
 
-    payload = json.loads(BM25_PATH.read_text(encoding="utf-8"))
+    corpus = [tokenize(chunk["text"]) for chunk in chunks]
+    return BM25Okapi(corpus), chunks
 
-    chunks = payload["chunks"]
-    corpus = payload["tokenized_corpus"]
-
-    if len(chunks) != len(corpus):
-        raise RuntimeError("BM25 corpus and chunk counts do not match.")
-
-    bm25 = BM25Okapi(corpus)
-
-    return bm25, chunks
-
-
-@lru_cache(maxsize=1)
-def get_reranker():
-    # Run reranking on CPU to avoid competing with embeddings for VRAM.
-    return CrossEncoder(RERANKER_MODEL, device="cpu")
-
-
-# ---------------- Dense retrieval ----------------
 
 def dense_search(question: str, top_k: int = 10):
-    collection = get_chroma_collection()
+    client = get_supabase_client()
     model = get_embedding_model()
 
-    query_embedding = model.encode(
+    embedding = model.encode(
         question,
         normalize_embeddings=True,
         convert_to_numpy=True,
     )
 
-    result = collection.query(
-        query_embeddings=[query_embedding.tolist()],
-        n_results=min(top_k, collection.count()),
-        include=["documents", "metadatas", "distances"],
-    )
+    response = client.rpc(
+        "match_document_chunks",
+        {
+            "query_embedding": "[" + ",".join(
+                str(float(value)) for value in embedding
+            ) + "]",
+            "match_count": top_k,
+        },
+    ).execute()
 
     hits = []
+    for rank, row in enumerate(response.data or [], start=1):
+        metadata = dict(row.get("metadata") or {})
+        metadata.setdefault("page", row.get("page"))
+        metadata.setdefault("chunk_index", row.get("chunk_index"))
 
-    ids = result["ids"][0]
-    documents = result["documents"][0]
-    metadatas = result["metadatas"][0]
-    distances = result["distances"][0]
-
-    for rank, (chunk_id, text, metadata, distance) in enumerate(
-        zip(ids, documents, metadatas, distances),
-        start=1,
-    ):
         hits.append({
-            "id": chunk_id,
-            "text": text,
-            "metadata": metadata or {},
+            "id": row["id"],
+            "text": row["content"],
+            "metadata": metadata,
             "dense_rank": rank,
-            "dense_distance": float(distance),
-            "dense_similarity": 1.0 - float(distance),
+            "dense_similarity": float(row["similarity"]),
+            "dense_distance": 1.0 - float(row["similarity"]),
         })
 
     return hits
 
 
-# ---------------- Sparse retrieval ----------------
-
 def sparse_search(question: str, top_k: int = 10):
     bm25, chunks = get_bm25_data()
-
     query_tokens = tokenize(question)
-    scores = bm25.get_scores(query_tokens)
 
-    ranked_indices = sorted(
-        range(len(scores)),
-        key=lambda index: scores[index],
-        reverse=True,
-    )
+    if not query_tokens:
+        return []
+
+    scores = bm25.get_scores(query_tokens)
+    query_terms = set(query_tokens)
+    ranked_indices = np.argsort(scores)[::-1]
 
     hits = []
-
     for index in ranked_indices:
-        score = float(scores[index])
+        chunk = chunks[int(index)]
+        chunk_terms = set(tokenize(chunk["text"]))
 
-        # Do not treat documents with no keyword matches as useful hits.
-        chunk_tokens = set(tokenize(chunks[index]["text"]))
-
-        if not set(query_tokens).intersection(chunk_tokens):
+        if not query_terms.intersection(chunk_terms):
             continue
-
-        chunk = chunks[index]
 
         hits.append({
             "id": chunk["id"],
             "text": chunk["text"],
-            "metadata": {
-                key: value
-                for key, value in chunk.items()
-                if key not in {"id", "text"}
-                and value is not None
-            },
+            "metadata": chunk["metadata"],
             "bm25_rank": len(hits) + 1,
-            "bm25_score": score,
+            "bm25_score": float(scores[index]),
         })
 
         if len(hits) >= top_k:
@@ -158,28 +153,24 @@ def sparse_search(question: str, top_k: int = 10):
     return hits
 
 
-# ---------------- Reciprocal Rank Fusion ----------------
-
 def reciprocal_rank_fusion(
     dense_hits,
     sparse_hits,
-    dense_weight: float = 0.7,
-    sparse_weight: float = 0.3,
-    rrf_k: int = 60,
+    dense_weight=0.7,
+    sparse_weight=0.3,
+    rrf_k=60,
 ):
-    """Fuse ranked lists without comparing incompatible raw scores."""
     if dense_weight < 0 or sparse_weight < 0:
         raise ValueError("RRF weights cannot be negative.")
-
     if dense_weight + sparse_weight == 0:
         raise ValueError("At least one RRF weight must be positive.")
 
     fused = {}
 
-    for channel, hits, weight in [
+    for channel, hits, weight in (
         ("dense", dense_hits, dense_weight),
         ("sparse", sparse_hits, sparse_weight),
-    ]:
+    ):
         for rank, hit in enumerate(hits, start=1):
             chunk_id = hit["id"]
 
@@ -195,18 +186,16 @@ def reciprocal_rank_fusion(
                 }
 
             item = fused[chunk_id]
-
-            # Keep the same chunk text and metadata whichever channel found it.
             item["text"] = hit["text"]
             item["metadata"] = hit["metadata"]
 
             if channel == "dense":
                 item["dense_rank"] = rank
-                item["dense_distance"] = hit["dense_distance"]
-                item["dense_similarity"] = hit["dense_similarity"]
+                item["dense_distance"] = hit.get("dense_distance")
+                item["dense_similarity"] = hit.get("dense_similarity")
             else:
                 item["bm25_rank"] = rank
-                item["bm25_score"] = hit["bm25_score"]
+                item["bm25_score"] = hit.get("bm25_score")
 
             item["rrf_score"] += weight / (rrf_k + rank)
 
@@ -217,23 +206,15 @@ def reciprocal_rank_fusion(
     )
 
 
-# ---------------- Cross-encoder reranking ----------------
-
-def rerank(question: str, candidates: list[dict[str, Any]]):
+def rerank(question: str, candidates):
     if not candidates:
         return []
 
     model = get_reranker()
-
-    pairs = [
-        (question, candidate["text"])
-        for candidate in candidates
-    ]
-
+    pairs = [(question, item["text"]) for item in candidates]
     scores = model.predict(pairs, show_progress_bar=False)
 
     ranked = []
-
     for candidate, score in zip(candidates, scores):
         item = dict(candidate)
         item["rerank_score"] = float(score)
@@ -246,16 +227,14 @@ def rerank(question: str, candidates: list[dict[str, Any]]):
     )
 
 
-# ---------------- Complete retrieval pipeline ----------------
-
 def retrieve(
     question: str,
-    dense_k: int = 10,
-    sparse_k: int = 10,
-    candidate_k: int = 20,
-    final_k: int = 5,
-    dense_weight: float = 0.7,
-    sparse_weight: float = 0.3,
+    dense_k=10,
+    sparse_k=10,
+    candidate_k=20,
+    final_k=5,
+    dense_weight=0.7,
+    sparse_weight=0.3,
 ):
     if not question or not question.strip():
         raise ValueError("Question cannot be empty.")
@@ -273,8 +252,10 @@ def retrieve(
         sparse_weight=sparse_weight,
     )
 
-    candidates = fused_hits[:candidate_k]
-    reranked_hits = rerank(question, candidates)
+    reranked_hits = rerank(
+        question,
+        fused_hits[:candidate_k],
+    )
 
     return {
         "question": question,
@@ -283,44 +264,9 @@ def retrieve(
         "fused_results": fused_hits,
         "results": reranked_hits[:final_k],
     }
-    
-def clear_retrieval_caches() -> None:
-    """Reload persistent indexes after documents are reindexed."""
-    get_chroma_collection.cache_clear()
+
+
+def clear_retrieval_caches():
     get_bm25_data.cache_clear()
-
-
-if __name__ == "__main__":
-    question = input("Ask a question about your documents: ").strip()
-
-    try:
-        output = retrieve(question)
-
-        print("\n--- Dense Search ---")
-        for hit in output["dense_results"]:
-            print(
-                f'{hit["dense_rank"]}. {hit["metadata"].get("source")} '
-                f'| similarity={hit["dense_similarity"]:.4f}'
-            )
-            print(hit["text"][:250], "\n")
-
-        print("\n--- BM25 Search ---")
-        for hit in output["sparse_results"]:
-            print(
-                f'{hit["bm25_rank"]}. {hit["metadata"].get("source")} '
-                f'| score={hit["bm25_score"]:.4f}'
-            )
-            print(hit["text"][:250], "\n")
-
-        print("\n--- Final Reranked Results ---")
-        for rank, hit in enumerate(output["results"], start=1):
-            print(
-                f'\n{rank}. {hit["metadata"].get("source")} '
-                f'| RRF={hit["rrf_score"]:.5f} '
-                f'| reranker={hit["rerank_score"]:.4f}'
-            )
-            print(hit["text"])
-
-    except Exception as exc:
-        print(f"Retrieval failed: {exc}")
-        raise
+    get_embedding_model.cache_clear()
+    get_reranker.cache_clear()

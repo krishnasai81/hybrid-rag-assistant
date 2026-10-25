@@ -21,3 +21,4 @@ data/indexes/
 
 # Logs
 *.log
+*.backup
