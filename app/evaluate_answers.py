@@ -1,200 +1,71 @@
 
 import json
 from pathlib import Path
-from typing import Any
 
 from app.generation import ask_documents
 
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 DATASET_PATH = BASE_DIR / "data" / "evaluation" / "golden_dataset.json"
-REPORT_PATH = BASE_DIR / "data" / "evaluation" / "answer_results.json"
+REPORT_PATH = BASE_DIR / "data" / "evaluation" / "answer_evaluation.json"
 
 
-ABSTENTION_PHRASES = (
-    "does not answer the question",
-    "does not specify",
-    "doesn't specify",
-    "not specified",
-    "insufficient evidence",
-    "cannot determine",
-    "can't determine",
-    "could not find information",
-    "couldn't find information",
-    "not enough information",
-    "unable to determine",
-    "does not contain",
-)
-
-
-
-def is_abstention(answer: str) -> bool:
-    """Recognize common ways the assistant says evidence is missing."""
-    text = " ".join(answer.casefold().split())
-
-    patterns = (
-        "does not answer the question",
-        "doesn't answer the question",
-        "does not specify",
-        "doesn't specify",
-        "does not mention",
-        "doesn't mention",
-        "not mentioned",
-        "not specified",
-        "does not contain information",
-        "doesn't contain information",
-        "no information about",
-        "insufficient evidence",
-        "insufficient information",
-        "cannot determine",
-        "can't determine",
-        "could not determine",
-        "couldn't determine",
-        "could not find information",
-        "couldn't find information",
-        "not enough information",
-        "unable to determine",
-        "the evidence is insufficient",
-        "does not contain any information",
-        "doesn't contain any information",
-    )
-
-    return any(pattern in text for pattern in patterns)
-
-
-def get_verification(result: dict[str, Any]) -> dict[str, Any]:
-    verification = result.get("verification", {})
-    return verification if isinstance(verification, dict) else {}
-
-
-def evaluate_answers() -> None:
-    with open(DATASET_PATH, "r", encoding="utf-8") as file:
-        dataset = json.load(file)
-
+def evaluate_answers():
+    dataset = json.loads(DATASET_PATH.read_text(encoding="utf-8"))
     report = []
-    unanswerable_total = 0
-    unanswerable_abstentions = 0
-    answerable_total = 0
-    answerable_responses = 0
-    citation_coverages = []
-    invalid_citation_total = 0
-    unsupported_claim_total = 0
 
-    for item in dataset:
-        question_id = item["id"]
+    for index, item in enumerate(dataset, start=1):
         question = item["question"]
-        expected_answer = item["expected_answer"]
-        answerable = item["answerable"]
-
-        print(f"\n{'=' * 65}")
-        print(f"{question_id}: {question}")
+        print(f"\n[{index}/{len(dataset)}] {item['id']}: {question}")
 
         try:
             result = ask_documents(question)
 
-            if not isinstance(result, dict):
-                raise TypeError(
-                    "ask_documents() must return a dictionary."
-                )
-
-            answer = str(result.get("answer", ""))
-            sources = result.get("sources", [])
-            verification = get_verification(result)
-
-            abstained = is_abstention(answer)
-
-            if answerable:
-                answerable_total += 1
-                if answer.strip() and not abstained:
-                    answerable_responses += 1
-            else:
-                unanswerable_total += 1
-                if abstained:
-                    unanswerable_abstentions += 1
-
-            invalid_citations = verification.get(
-                "invalid_citations", []
-            )
-            invalid_citation_total += len(invalid_citations)
-
-            coverage = verification.get("citation_coverage")
-            if isinstance(coverage, (int, float)):
-                citation_coverages.append(float(coverage))
-
-            checks = verification.get("checks", [])
-            for check in checks:
-                if check.get("verdict") == "unsupported":
-                    unsupported_claim_total += 1
-
-            entry = {
-                "id": question_id,
+            row = {
+                "id": item["id"],
                 "question": question,
-                "expected_answer": expected_answer,
-                "answerable": answerable,
-                "generated_answer": answer,
-                "abstained": abstained,
-                "sources": sources,
-                "verification": verification,
+                "answerable": item["answerable"],
+                "reference_answer": item.get("reference_answer", ""),
+                "generated_answer": result.get("answer", ""),
+                "retrieved_contexts": [
+                    source.get("text", "")
+                    for source in result.get("sources", [])
+                ],
+                "sources": result.get("sources", []),
+                "verification": result.get("verification", {}),
+                "error": None,
             }
-            report.append(entry)
 
-            print(f"\nExpected answer: {expected_answer}")
-            print(f"Generated answer: {answer}")
-            print(f"Abstained: {abstained}")
-            print(f"Sources: {json.dumps(sources, ensure_ascii=False)}")
+            print("Answer:", row["generated_answer"])
             print(
                 "Citation coverage:",
-                verification.get("citation_coverage", "unavailable"),
+                row["verification"].get("citation_coverage", 0.0),
             )
-            print("Invalid citations:", invalid_citations)
 
         except Exception as exc:
-            print(f"ERROR: {exc}")
-            report.append({
-                "id": question_id,
+            row = {
+                "id": item["id"],
                 "question": question,
-                "answerable": answerable,
+                "answerable": item["answerable"],
+                "reference_answer": item.get("reference_answer", ""),
+                "generated_answer": "",
+                "retrieved_contexts": [],
+                "sources": [],
+                "verification": {},
                 "error": str(exc),
-            })
+            }
+            print("ERROR:", exc)
 
-    summary = {
-        "total_questions": len(dataset),
-        "answerable_questions": answerable_total,
-        "answerable_response_rate": (
-            answerable_responses / answerable_total
-            if answerable_total else 0.0
-        ),
-        "unanswerable_questions": unanswerable_total,
-        "abstention_rate_on_unanswerable": (
-            unanswerable_abstentions / unanswerable_total
-            if unanswerable_total else 0.0
-        ),
-        "average_citation_coverage": (
-            sum(citation_coverages) / len(citation_coverages)
-            if citation_coverages else None
-        ),
-        "invalid_citation_count": invalid_citation_total,
-        "unsupported_claim_count": unsupported_claim_total,
-        "note": (
-            "Response rate is not answer correctness. "
-            "Review generated answers against expected answers."
-        ),
-    }
+        report.append(row)
 
     REPORT_PATH.parent.mkdir(parents=True, exist_ok=True)
+    REPORT_PATH.write_text(
+        json.dumps(report, indent=2, ensure_ascii=False),
+        encoding="utf-8",
+    )
 
-    with open(REPORT_PATH, "w", encoding="utf-8") as file:
-        json.dump(
-            {"summary": summary, "results": report},
-            file,
-            indent=2,
-            ensure_ascii=False,
-        )
-
-    print(f"\n{'=' * 65}")
-    print("ANSWER EVALUATION SUMMARY")
-    print(json.dumps(summary, indent=2))
-    print(f"\nReport saved to: {REPORT_PATH}")
+    print(f"\nEvaluation report saved to: {REPORT_PATH}")
+    print(f"Questions processed: {len(report)}")
+    print(f"Errors: {sum(row['error'] is not None for row in report)}")
 
 
 if __name__ == "__main__":

@@ -1,0 +1,226 @@
+{
+  "ragas_version": "0.4.3",
+  "total_questions": 8,
+  "summary": {
+    "faithfulness": {
+      "mean_score": 0.9375,
+      "scored_questions": 8
+    },
+    "context_precision": {
+      "mean_score": null,
+      "scored_questions": 0
+    },
+    "context_recall": {
+      "mean_score": null,
+      "scored_questions": 0
+    },
+    "answer_relevancy": {
+      "mean_score": null,
+      "scored_questions": 0
+    },
+    "factual_correctness": {
+      "mean_score": 0.0,
+      "scored_questions": 6
+    },
+    "noise_sensitivity": {
+      "mean_score": 0.0,
+      "scored_questions": 6
+    },
+    "context_entity_recall": {
+      "mean_score": null,
+      "scored_questions": 0
+    },
+    "response_groundedness": {
+      "mean_score": null,
+      "scored_questions": 0
+    }
+  },
+  "results": [
+    {
+      "id": "Q001",
+      "question": "What security setting must employees enable?",
+      "answerable": true,
+      "answer": "The available evidence does not provide any information about a security setting that employees must enable.",
+      "retrieved_context_count": 5,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": null,
+        "context_recall": null,
+        "answer_relevancy": null,
+        "factual_correctness": 0.0,
+        "noise_sensitivity": 0.0,
+        "context_entity_recall": null,
+        "response_groundedness": null
+      },
+      "errors": {
+        "context_precision": "ContextPrecisionWithReference.ascore() got an unexpected keyword argument 'response'",
+        "context_recall": "ContextRecall.ascore() got an unexpected keyword argument 'response'",
+        "answer_relevancy": "AnswerRelevancy.ascore() got an unexpected keyword argument 'retrieved_contexts'",
+        "context_entity_recall": "ContextEntityRecall.ascore() got an unexpected keyword argument 'user_input'",
+        "response_groundedness": "ResponseGroundedness.ascore() got an unexpected keyword argument 'user_input'"
+      }
+    },
+    {
+      "id": "Q002",
+      "question": "Can employees share passwords with colleagues?",
+      "answerable": true,
+      "answer": "The provided documents do not contain any information about whether employees are allowed to share passwords with colleagues. Therefore, it cannot be determined from the available evidence.",
+      "retrieved_context_count": 5,
+      "metrics": {
+        "faithfulness": 0.5,
+        "context_precision": null,
+        "context_recall": null,
+        "answer_relevancy": null,
+        "factual_correctness": 0.0,
+        "noise_sensitivity": 0.0,
+        "context_entity_recall": null,
+        "response_groundedness": null
+      },
+      "errors": {
+        "context_precision": "ContextPrecisionWithReference.ascore() got an unexpected keyword argument 'response'",
+        "context_recall": "ContextRecall.ascore() got an unexpected keyword argument 'response'",
+        "answer_relevancy": "AnswerRelevancy.ascore() got an unexpected keyword argument 'retrieved_contexts'",
+        "context_entity_recall": "ContextEntityRecall.ascore() got an unexpected keyword argument 'user_input'",
+        "response_groundedness": "ResponseGroundedness.ascore() got an unexpected keyword argument 'user_input'"
+      }
+    },
+    {
+      "id": "Q003",
+      "question": "How many days of paid leave do employees receive per year?",
+      "answerable": true,
+      "answer": "The available evidence does not provide information about the number of paid leave days employees receive per year.",
+      "retrieved_context_count": 5,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": null,
+        "context_recall": null,
+        "answer_relevancy": null,
+        "factual_correctness": 0.0,
+        "noise_sensitivity": 0.0,
+        "context_entity_recall": null,
+        "response_groundedness": null
+      },
+      "errors": {
+        "context_precision": "ContextPrecisionWithReference.ascore() got an unexpected keyword argument 'response'",
+        "context_recall": "ContextRecall.ascore() got an unexpected keyword argument 'response'",
+        "answer_relevancy": "AnswerRelevancy.ascore() got an unexpected keyword argument 'retrieved_contexts'",
+        "context_entity_recall": "ContextEntityRecall.ascore() got an unexpected keyword argument 'user_input'",
+        "response_groundedness": "ResponseGroundedness.ascore() got an unexpected keyword argument 'user_input'"
+      }
+    },
+    {
+      "id": "Q004",
+      "question": "Who approves annual leave requests?",
+      "answerable": true,
+      "answer": "The available evidence does not provide information about who approves annual leave requests.",
+      "retrieved_context_count": 5,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": null,
+        "context_recall": null,
+        "answer_relevancy": null,
+        "factual_correctness": 0.0,
+        "noise_sensitivity": 0.0,
+        "context_entity_recall": null,
+        "response_groundedness": null
+      },
+      "errors": {
+        "context_precision": "ContextPrecisionWithReference.ascore() got an unexpected keyword argument 'response'",
+        "context_recall": "ContextRecall.ascore() got an unexpected keyword argument 'response'",
+        "answer_relevancy": "AnswerRelevancy.ascore() got an unexpected keyword argument 'retrieved_contexts'",
+        "context_entity_recall": "ContextEntityRecall.ascore() got an unexpected keyword argument 'user_input'",
+        "response_groundedness": "ResponseGroundedness.ascore() got an unexpected keyword argument 'user_input'"
+      }
+    },
+    {
+      "id": "Q005",
+      "question": "What is the company's parental leave policy?",
+      "answerable": false,
+      "answer": "The available evidence does not provide any information about the company's parental leave policy.",
+      "retrieved_context_count": 5,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": null,
+        "context_recall": null,
+        "answer_relevancy": null,
+        "factual_correctness": null,
+        "noise_sensitivity": null,
+        "context_entity_recall": null,
+        "response_groundedness": null
+      },
+      "errors": {
+        "answer_relevancy": "AnswerRelevancy.ascore() got an unexpected keyword argument 'retrieved_contexts'",
+        "response_groundedness": "ResponseGroundedness.ascore() got an unexpected keyword argument 'user_input'"
+      }
+    },
+    {
+      "id": "Q006",
+      "question": "What is the company's password-sharing rule?",
+      "answerable": true,
+      "answer": "The available evidence does not provide any information about the company's password‑sharing rule.",
+      "retrieved_context_count": 5,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": null,
+        "context_recall": null,
+        "answer_relevancy": null,
+        "factual_correctness": 0.0,
+        "noise_sensitivity": 0.0,
+        "context_entity_recall": null,
+        "response_groundedness": null
+      },
+      "errors": {
+        "context_precision": "ContextPrecisionWithReference.ascore() got an unexpected keyword argument 'response'",
+        "context_recall": "ContextRecall.ascore() got an unexpected keyword argument 'response'",
+        "answer_relevancy": "AnswerRelevancy.ascore() got an unexpected keyword argument 'retrieved_contexts'",
+        "context_entity_recall": "ContextEntityRecall.ascore() got an unexpected keyword argument 'user_input'",
+        "response_groundedness": "ResponseGroundedness.ascore() got an unexpected keyword argument 'user_input'"
+      }
+    },
+    {
+      "id": "Q007",
+      "question": "Does the company specify a parental leave duration?",
+      "answerable": false,
+      "answer": "The provided evidence does not contain any information about a company’s parental leave policy or duration. Therefore, it cannot be determined from the available documents whether the company specifies a parental leave duration.",
+      "retrieved_context_count": 5,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": null,
+        "context_recall": null,
+        "answer_relevancy": null,
+        "factual_correctness": null,
+        "noise_sensitivity": null,
+        "context_entity_recall": null,
+        "response_groundedness": null
+      },
+      "errors": {
+        "answer_relevancy": "AnswerRelevancy.ascore() got an unexpected keyword argument 'retrieved_contexts'",
+        "response_groundedness": "ResponseGroundedness.ascore() got an unexpected keyword argument 'user_input'"
+      }
+    },
+    {
+      "id": "Q008",
+      "question": "What does the security policy say about authentication?",
+      "answerable": true,
+      "answer": "The provided documents do not contain any information about a security policy or its stance on authentication. Therefore, this question cannot be answered from the available evidence.",
+      "retrieved_context_count": 5,
+      "metrics": {
+        "faithfulness": 1.0,
+        "context_precision": null,
+        "context_recall": null,
+        "answer_relevancy": null,
+        "factual_correctness": 0.0,
+        "noise_sensitivity": 0.0,
+        "context_entity_recall": null,
+        "response_groundedness": null
+      },
+      "errors": {
+        "context_precision": "ContextPrecisionWithReference.ascore() got an unexpected keyword argument 'response'",
+        "context_recall": "ContextRecall.ascore() got an unexpected keyword argument 'response'",
+        "answer_relevancy": "AnswerRelevancy.ascore() got an unexpected keyword argument 'retrieved_contexts'",
+        "context_entity_recall": "ContextEntityRecall.ascore() got an unexpected keyword argument 'user_input'",
+        "response_groundedness": "ResponseGroundedness.ascore() got an unexpected keyword argument 'user_input'"
+      }
+    }
+  ]
+}

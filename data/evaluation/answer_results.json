@@ -2,12 +2,12 @@
   "summary": {
     "total_questions": 8,
     "answerable_questions": 6,
-    "answerable_response_rate": 1.0,
+    "answerable_response_rate": 0.8333333333333334,
     "unanswerable_questions": 2,
-    "abstention_rate_on_unanswerable": 1.0,
-    "average_citation_coverage": 1.0,
+    "abstention_rate_on_unanswerable": 0.5,
+    "average_citation_coverage": 0.0,
     "invalid_citation_count": 0,
-    "unsupported_claim_count": 0,
+    "unsupported_claim_count": 12,
     "note": "Response rate is not answer correctness. Review generated answers against expected answers."
   },
   "results": [
@@ -16,39 +16,69 @@
       "question": "What security setting must employees enable?",
       "expected_answer": "Employees must enable multi-factor authentication.",
       "answerable": true,
-      "generated_answer": "Employees must enable multi‑factor authentication. [1]",
-      "abstained": false,
+      "generated_answer": "The provided evidence does not contain any information about a security setting that employees must enable. Therefore, this cannot be determined from the available documents.",
+      "abstained": true,
       "sources": [
         {
           "citation_id": 1,
-          "source": "company_handbook.txt",
-          "page": null,
-          "chunk_index": 0,
-          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
-          "rerank_score": 4.891911506652832
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.373809814453125
+        },
+        {
+          "citation_id": 2,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.373809814453125
+        },
+        {
+          "citation_id": 3,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.391410827636719
+        },
+        {
+          "citation_id": 4,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.391410827636719
+        },
+        {
+          "citation_id": 5,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 1,
+          "text": "ICFAI Foundation for Higher Education, \nHyderabad\n2023 - 2027 \nGPA\n8.44\n10\nSKILLS\nPython\nJavaScript\nProblem Solving\nSQL\nHTML\nLANGUAGES\nTelugu\nNative\nHindi\nAdvanced\nEnglish\nProficient\nSTRENGTHS\nTeam Work\nCollaborated with 4 team members to integrate code for a \ncomplex project at Group projects\nProblem Solving\nUsed my critical thinking skills to develop solutions improving \napplication efficiency by 30%\nCommunication\nDeveloped effective communication skills while presenting",
+          "rerank_score": -11.410078048706055
         }
       ],
       "verification": {
         "checks": [
           {
-            "claim": "Employees must enable multi‑factor authentication.",
-            "citations": [
-              1
-            ],
-            "verdict": "supported",
-            "source_checks": [
-              {
-                "citation": 1,
-                "verdict": "supported",
-                "reason": "The Security Policy explicitly states that employees must enable multi‑factor authentication."
-              }
-            ]
+            "claim": "The provided evidence does not contain any information about a security setting that employees must enable.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
+          },
+          {
+            "claim": "Therefore, this cannot be determined from the available documents.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
           }
         ],
         "invalid_citations": [],
-        "factual_sentence_count": 1,
-        "verified_sentence_count": 1,
-        "citation_coverage": 1.0
+        "factual_sentence_count": 2,
+        "verified_sentence_count": 0,
+        "citation_coverage": 0.0
       }
     },
     {
@@ -56,39 +86,63 @@
       "question": "Can employees share passwords with colleagues?",
       "expected_answer": "Passwords must never be shared with colleagues.",
       "answerable": true,
-      "generated_answer": "Employees are not allowed to share passwords with colleagues. [1]",
+      "generated_answer": "The provided documents do not contain any information about whether employees are allowed to share passwords with colleagues, so this cannot be determined from the available evidence.",
       "abstained": false,
       "sources": [
         {
           "citation_id": 1,
-          "source": "company_handbook.txt",
-          "page": null,
-          "chunk_index": 0,
-          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
-          "rerank_score": 7.332226753234863
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 1,
+          "text": "ICFAI Foundation for Higher Education, \nHyderabad\n2023 - 2027 \nGPA\n8.44\n10\nSKILLS\nPython\nJavaScript\nProblem Solving\nSQL\nHTML\nLANGUAGES\nTelugu\nNative\nHindi\nAdvanced\nEnglish\nProficient\nSTRENGTHS\nTeam Work\nCollaborated with 4 team members to integrate code for a \ncomplex project at Group projects\nProblem Solving\nUsed my critical thinking skills to develop solutions improving \napplication efficiency by 30%\nCommunication\nDeveloped effective communication skills while presenting",
+          "rerank_score": -11.362936019897461
+        },
+        {
+          "citation_id": 2,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 1,
+          "text": "ICFAI Foundation for Higher Education, \nHyderabad\n2023 - 2027 \nGPA\n8.44\n10\nSKILLS\nPython\nJavaScript\nProblem Solving\nSQL\nHTML\nLANGUAGES\nTelugu\nNative\nHindi\nAdvanced\nEnglish\nProficient\nSTRENGTHS\nTeam Work\nCollaborated with 4 team members to integrate code for a \ncomplex project at Group projects\nProblem Solving\nUsed my critical thinking skills to develop solutions improving \napplication efficiency by 30%\nCommunication\nDeveloped effective communication skills while presenting",
+          "rerank_score": -11.362936019897461
+        },
+        {
+          "citation_id": 3,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.381383895874023
+        },
+        {
+          "citation_id": 4,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.381383895874023
+        },
+        {
+          "citation_id": 5,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.393587112426758
         }
       ],
       "verification": {
         "checks": [
           {
-            "claim": "Employees are not allowed to share passwords with colleagues.",
-            "citations": [
-              1
-            ],
-            "verdict": "supported",
-            "source_checks": [
-              {
-                "citation": 1,
-                "verdict": "supported",
-                "reason": "The evidence explicitly states that passwords must never be shared with colleagues, which directly supports the claim."
-              }
-            ]
+            "claim": "The provided documents do not contain any information about whether employees are allowed to share passwords with colleagues, so this cannot be determined from the available evidence.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
           }
         ],
         "invalid_citations": [],
         "factual_sentence_count": 1,
-        "verified_sentence_count": 1,
-        "citation_coverage": 1.0
+        "verified_sentence_count": 0,
+        "citation_coverage": 0.0
       }
     },
     {
@@ -96,39 +150,63 @@
       "question": "How many days of paid leave do employees receive per year?",
       "expected_answer": "Employees receive 20 days of paid leave per year.",
       "answerable": true,
-      "generated_answer": "Employees receive 20 days of paid leave per year.[1]",
+      "generated_answer": "The available evidence does not provide information about the number of paid leave days employees receive per year.",
       "abstained": false,
       "sources": [
         {
           "citation_id": 1,
-          "source": "company_handbook.txt",
-          "page": null,
-          "chunk_index": 0,
-          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
-          "rerank_score": 9.890344619750977
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.263312339782715
+        },
+        {
+          "citation_id": 2,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.263312339782715
+        },
+        {
+          "citation_id": 3,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 4,
+          "text": "data cleaning, preprocessing, and \norganization. I used the prepared data to \ntrain AI/ML models, gaining hands-on \nexperience in practical AI workflows and \ndata-driven model development.\nPROJECTS\nAI Ayurvedic Health Assistant\n2025 - 2025 \nHyderābād, India\nAI Ayurvedic Assistant\nDeveloped an AI-powered Ayurvedic Health \nAssistant that analyzes user-provided \nsymptoms and disease inputs.\nIntegrated a large language model to \ngenerate relevant Ayurvedic remedies",
+          "rerank_score": -11.280508995056152
+        },
+        {
+          "citation_id": 4,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 4,
+          "text": "data cleaning, preprocessing, and \norganization. I used the prepared data to \ntrain AI/ML models, gaining hands-on \nexperience in practical AI workflows and \ndata-driven model development.\nPROJECTS\nAI Ayurvedic Health Assistant\n2025 - 2025 \nHyderābād, India\nAI Ayurvedic Assistant\nDeveloped an AI-powered Ayurvedic Health \nAssistant that analyzes user-provided \nsymptoms and disease inputs.\nIntegrated a large language model to \ngenerate relevant Ayurvedic remedies",
+          "rerank_score": -11.280508995056152
+        },
+        {
+          "citation_id": 5,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.296308517456055
         }
       ],
       "verification": {
         "checks": [
           {
-            "claim": "Employees receive 20 days of paid leave per year.",
-            "citations": [
-              1
-            ],
-            "verdict": "supported",
-            "source_checks": [
-              {
-                "citation": 1,
-                "verdict": "supported",
-                "reason": "The evidence explicitly states that employees receive 20 days of paid leave per year."
-              }
-            ]
+            "claim": "The available evidence does not provide information about the number of paid leave days employees receive per year.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
           }
         ],
         "invalid_citations": [],
         "factual_sentence_count": 1,
-        "verified_sentence_count": 1,
-        "citation_coverage": 1.0
+        "verified_sentence_count": 0,
+        "citation_coverage": 0.0
       }
     },
     {
@@ -136,39 +214,63 @@
       "question": "Who approves annual leave requests?",
       "expected_answer": "The employee's manager must approve annual leave requests.",
       "answerable": true,
-      "generated_answer": "Annual leave requests must be approved by the employee’s manager. [1]",
+      "generated_answer": "The available evidence does not provide information about who approves annual leave requests.",
       "abstained": false,
       "sources": [
         {
           "citation_id": 1,
-          "source": "company_handbook.txt",
-          "page": null,
-          "chunk_index": 0,
-          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
-          "rerank_score": 7.231811046600342
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.266183853149414
+        },
+        {
+          "citation_id": 2,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.266183853149414
+        },
+        {
+          "citation_id": 3,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 1,
+          "text": "ICFAI Foundation for Higher Education, \nHyderabad\n2023 - 2027 \nGPA\n8.44\n10\nSKILLS\nPython\nJavaScript\nProblem Solving\nSQL\nHTML\nLANGUAGES\nTelugu\nNative\nHindi\nAdvanced\nEnglish\nProficient\nSTRENGTHS\nTeam Work\nCollaborated with 4 team members to integrate code for a \ncomplex project at Group projects\nProblem Solving\nUsed my critical thinking skills to develop solutions improving \napplication efficiency by 30%\nCommunication\nDeveloped effective communication skills while presenting",
+          "rerank_score": -11.321813583374023
+        },
+        {
+          "citation_id": 4,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 1,
+          "text": "ICFAI Foundation for Higher Education, \nHyderabad\n2023 - 2027 \nGPA\n8.44\n10\nSKILLS\nPython\nJavaScript\nProblem Solving\nSQL\nHTML\nLANGUAGES\nTelugu\nNative\nHindi\nAdvanced\nEnglish\nProficient\nSTRENGTHS\nTeam Work\nCollaborated with 4 team members to integrate code for a \ncomplex project at Group projects\nProblem Solving\nUsed my critical thinking skills to develop solutions improving \napplication efficiency by 30%\nCommunication\nDeveloped effective communication skills while presenting",
+          "rerank_score": -11.321813583374023
+        },
+        {
+          "citation_id": 5,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.323580741882324
         }
       ],
       "verification": {
         "checks": [
           {
-            "claim": "Annual leave requests must be approved by the employee’s manager.",
-            "citations": [
-              1
-            ],
-            "verdict": "supported",
-            "source_checks": [
-              {
-                "citation": 1,
-                "verdict": "supported",
-                "reason": "The Employee Leave Policy explicitly states that annual leave requests must be approved by the employee’s manager."
-              }
-            ]
+            "claim": "The available evidence does not provide information about who approves annual leave requests.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
           }
         ],
         "invalid_citations": [],
         "factual_sentence_count": 1,
-        "verified_sentence_count": 1,
-        "citation_coverage": 1.0
+        "verified_sentence_count": 0,
+        "citation_coverage": 0.0
       }
     },
     {
@@ -176,39 +278,63 @@
       "question": "What is the company's parental leave policy?",
       "expected_answer": "The document does not specify a parental leave policy.",
       "answerable": false,
-      "generated_answer": "The provided evidence does not contain any information about the company's parental leave policy. [1]",
-      "abstained": true,
+      "generated_answer": "The available evidence does not provide any information about the company's parental leave policy.",
+      "abstained": false,
       "sources": [
         {
           "citation_id": 1,
-          "source": "company_handbook.txt",
-          "page": null,
-          "chunk_index": 0,
-          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
-          "rerank_score": -3.9950265884399414
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.336288452148438
+        },
+        {
+          "citation_id": 2,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.336288452148438
+        },
+        {
+          "citation_id": 3,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.369588851928711
+        },
+        {
+          "citation_id": 4,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.369588851928711
+        },
+        {
+          "citation_id": 5,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 1,
+          "text": "ICFAI Foundation for Higher Education, \nHyderabad\n2023 - 2027 \nGPA\n8.44\n10\nSKILLS\nPython\nJavaScript\nProblem Solving\nSQL\nHTML\nLANGUAGES\nTelugu\nNative\nHindi\nAdvanced\nEnglish\nProficient\nSTRENGTHS\nTeam Work\nCollaborated with 4 team members to integrate code for a \ncomplex project at Group projects\nProblem Solving\nUsed my critical thinking skills to develop solutions improving \napplication efficiency by 30%\nCommunication\nDeveloped effective communication skills while presenting",
+          "rerank_score": -11.382707595825195
         }
       ],
       "verification": {
         "checks": [
           {
-            "claim": "The provided evidence does not contain any information about the company's parental leave policy.",
-            "citations": [
-              1
-            ],
-            "verdict": "supported",
-            "source_checks": [
-              {
-                "citation": 1,
-                "verdict": "supported",
-                "reason": "The evidence only discusses general paid leave and security policies, with no mention of a parental leave policy."
-              }
-            ]
+            "claim": "The available evidence does not provide any information about the company's parental leave policy.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
           }
         ],
         "invalid_citations": [],
         "factual_sentence_count": 1,
-        "verified_sentence_count": 1,
-        "citation_coverage": 1.0
+        "verified_sentence_count": 0,
+        "citation_coverage": 0.0
       }
     },
     {
@@ -216,39 +342,69 @@
       "question": "What is the company's password-sharing rule?",
       "expected_answer": "Employees must never share passwords with colleagues.",
       "answerable": true,
-      "generated_answer": "The company’s password‑sharing rule is that passwords must never be shared with colleagues. [1]",
+      "generated_answer": "The available evidence does not provide any information about the company's password‑sharing rule. Therefore, it cannot be determined from the supplied documents.",
       "abstained": false,
       "sources": [
         {
           "citation_id": 1,
-          "source": "company_handbook.txt",
-          "page": null,
-          "chunk_index": 0,
-          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
-          "rerank_score": -2.2387354373931885
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.446483612060547
+        },
+        {
+          "citation_id": 2,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.446483612060547
+        },
+        {
+          "citation_id": 3,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.471073150634766
+        },
+        {
+          "citation_id": 4,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.471073150634766
+        },
+        {
+          "citation_id": 5,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 4,
+          "text": "data cleaning, preprocessing, and \norganization. I used the prepared data to \ntrain AI/ML models, gaining hands-on \nexperience in practical AI workflows and \ndata-driven model development.\nPROJECTS\nAI Ayurvedic Health Assistant\n2025 - 2025 \nHyderābād, India\nAI Ayurvedic Assistant\nDeveloped an AI-powered Ayurvedic Health \nAssistant that analyzes user-provided \nsymptoms and disease inputs.\nIntegrated a large language model to \ngenerate relevant Ayurvedic remedies",
+          "rerank_score": -11.47789192199707
         }
       ],
       "verification": {
         "checks": [
           {
-            "claim": "The company’s password‑sharing rule is that passwords must never be shared with colleagues.",
-            "citations": [
-              1
-            ],
-            "verdict": "supported",
-            "source_checks": [
-              {
-                "citation": 1,
-                "verdict": "supported",
-                "reason": "The Security Policy explicitly states that passwords must never be shared with colleagues, directly supporting the claim."
-              }
-            ]
+            "claim": "The available evidence does not provide any information about the company's password‑sharing rule.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
+          },
+          {
+            "claim": "Therefore, it cannot be determined from the supplied documents.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
           }
         ],
         "invalid_citations": [],
-        "factual_sentence_count": 1,
-        "verified_sentence_count": 1,
-        "citation_coverage": 1.0
+        "factual_sentence_count": 2,
+        "verified_sentence_count": 0,
+        "citation_coverage": 0.0
       }
     },
     {
@@ -256,39 +412,69 @@
       "question": "Does the company specify a parental leave duration?",
       "expected_answer": "The document does not specify a parental leave duration.",
       "answerable": false,
-      "generated_answer": "The evidence does not mention a parental leave duration. [1]",
+      "generated_answer": "The provided evidence does not contain any information about a company’s parental leave policy or duration. Therefore, it cannot be determined from the available documents whether the company specifies a parental leave duration.",
       "abstained": true,
       "sources": [
         {
           "citation_id": 1,
-          "source": "company_handbook.txt",
-          "page": null,
-          "chunk_index": 0,
-          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
-          "rerank_score": -7.710702896118164
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.3448486328125
+        },
+        {
+          "citation_id": 2,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.3448486328125
+        },
+        {
+          "citation_id": 3,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.351787567138672
+        },
+        {
+          "citation_id": 4,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.351787567138672
+        },
+        {
+          "citation_id": 5,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 1,
+          "text": "ICFAI Foundation for Higher Education, \nHyderabad\n2023 - 2027 \nGPA\n8.44\n10\nSKILLS\nPython\nJavaScript\nProblem Solving\nSQL\nHTML\nLANGUAGES\nTelugu\nNative\nHindi\nAdvanced\nEnglish\nProficient\nSTRENGTHS\nTeam Work\nCollaborated with 4 team members to integrate code for a \ncomplex project at Group projects\nProblem Solving\nUsed my critical thinking skills to develop solutions improving \napplication efficiency by 30%\nCommunication\nDeveloped effective communication skills while presenting",
+          "rerank_score": -11.375243186950684
         }
       ],
       "verification": {
         "checks": [
           {
-            "claim": "The evidence does not mention a parental leave duration.",
-            "citations": [
-              1
-            ],
-            "verdict": "supported",
-            "source_checks": [
-              {
-                "citation": 1,
-                "verdict": "supported",
-                "reason": "Evidence does not mention parental leave."
-              }
-            ]
+            "claim": "The provided evidence does not contain any information about a company’s parental leave policy or duration.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
+          },
+          {
+            "claim": "Therefore, it cannot be determined from the available documents whether the company specifies a parental leave duration.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
           }
         ],
         "invalid_citations": [],
-        "factual_sentence_count": 1,
-        "verified_sentence_count": 1,
-        "citation_coverage": 1.0
+        "factual_sentence_count": 2,
+        "verified_sentence_count": 0,
+        "citation_coverage": 0.0
       }
     },
     {
@@ -296,39 +482,69 @@
       "question": "What does the security policy say about authentication?",
       "expected_answer": "Employees must enable multi-factor authentication.",
       "answerable": true,
-      "generated_answer": "The security policy requires employees to enable multi‑factor authentication. [1]",
+      "generated_answer": "The provided documents do not contain any information about a security policy or its stance on authentication. Therefore, this question cannot be answered from the available evidence.",
       "abstained": false,
       "sources": [
         {
           "citation_id": 1,
-          "source": "company_handbook.txt",
-          "page": null,
-          "chunk_index": 0,
-          "text": "Employee Leave Policy\n\nEmployees receive 20 days of paid leave per year.\nAnnual leave requests must be approved by the employee's manager.\n\nSecurity Policy\n\nEmployees must enable multi-factor authentication.\nPasswords must never be shared with colleagues.",
-          "rerank_score": -0.19479931890964508
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.320788383483887
+        },
+        {
+          "citation_id": 2,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 2,
+          "text": "Communication\nDeveloped effective communication skills while presenting \nprogress updates weekly\nEXPERIENCE\nWeb Development Intern\nProdigy InfoTech\n2024 - 2024 \nHyderābād, India\nWeb Intern\nDeveloped and deployed responsive web \npages using HTML, CSS, and JavaScript, \nimproving user experience and design \nconsistency.\nEnhanced problem-solving skills by \ntroubleshooting and optimizing code for \nbetter performance and cross-browser \ncompatibility.\nStrengthened technical expertise by",
+          "rerank_score": -11.320788383483887
+        },
+        {
+          "citation_id": 3,
+          "source": "4d4d758d2c684734ad9e9e0dd599140a_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 1,
+          "text": "ICFAI Foundation for Higher Education, \nHyderabad\n2023 - 2027 \nGPA\n8.44\n10\nSKILLS\nPython\nJavaScript\nProblem Solving\nSQL\nHTML\nLANGUAGES\nTelugu\nNative\nHindi\nAdvanced\nEnglish\nProficient\nSTRENGTHS\nTeam Work\nCollaborated with 4 team members to integrate code for a \ncomplex project at Group projects\nProblem Solving\nUsed my critical thinking skills to develop solutions improving \napplication efficiency by 30%\nCommunication\nDeveloped effective communication skills while presenting",
+          "rerank_score": -11.373215675354004
+        },
+        {
+          "citation_id": 4,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 1,
+          "text": "ICFAI Foundation for Higher Education, \nHyderabad\n2023 - 2027 \nGPA\n8.44\n10\nSKILLS\nPython\nJavaScript\nProblem Solving\nSQL\nHTML\nLANGUAGES\nTelugu\nNative\nHindi\nAdvanced\nEnglish\nProficient\nSTRENGTHS\nTeam Work\nCollaborated with 4 team members to integrate code for a \ncomplex project at Group projects\nProblem Solving\nUsed my critical thinking skills to develop solutions improving \napplication efficiency by 30%\nCommunication\nDeveloped effective communication skills while presenting",
+          "rerank_score": -11.373215675354004
+        },
+        {
+          "citation_id": 5,
+          "source": "5225dc7b6e934d17a1085617f869bcb7_KrishnaSairesume1.pdf",
+          "page": 1,
+          "chunk_index": 3,
+          "text": "better performance and cross-browser \ncompatibility.\nStrengthened technical expertise by \ncompleting real-world web development \nprojects, meeting deadlines, and \nincorporating client feedback effectively.\nAI Intern\nSwecha Telangana\n06/2025 - 07/2025 \nHyderābād, India\nAI Intern\nDuring my internship as an AI Intern at \nSwecha Telangana, I worked on collecting \ndatasets from various sources, followed by \ndata cleaning, preprocessing, and \norganization. I used the prepared data to",
+          "rerank_score": -11.381503105163574
         }
       ],
       "verification": {
         "checks": [
           {
-            "claim": "The security policy requires employees to enable multi‑factor authentication.",
-            "citations": [
-              1
-            ],
-            "verdict": "supported",
-            "source_checks": [
-              {
-                "citation": 1,
-                "verdict": "supported",
-                "reason": "The evidence explicitly states that employees must enable multi‑factor authentication."
-              }
-            ]
+            "claim": "The provided documents do not contain any information about a security policy or its stance on authentication.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
+          },
+          {
+            "claim": "Therefore, this question cannot be answered from the available evidence.",
+            "citations": [],
+            "verdict": "unsupported",
+            "reason": "No citation was provided for this sentence."
           }
         ],
         "invalid_citations": [],
-        "factual_sentence_count": 1,
-        "verified_sentence_count": 1,
-        "citation_coverage": 1.0
+        "factual_sentence_count": 2,
+        "verified_sentence_count": 0,
+        "citation_coverage": 0.0
       }
     }
   ]

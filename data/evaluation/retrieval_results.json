@@ -1,91 +1,175 @@
 {
+  "evaluation_type": "Hybrid RAG retrieval evaluation",
+  "k_values": [
+    1,
+    3,
+    5
+  ],
+  "relevance_method": "Normalized exact matching with keyword-coverage fallback at a threshold of 0.60.",
+  "metric_note": "Evidence-hit@K and Hit Rate@K indicate whether at least one chunk matched the relevance anchor. They are not full corpus-level Recall@K. Precision@K depends on the quality of anchor-based relevance labels.",
   "summary": {
-    "answerable_questions_evaluated": 6,
-    "recall_at_1": 1.0,
-    "recall_at_3": 1.0,
-    "recall_at_5": 1.0,
-    "mrr": 1.0
+    "answerable_questions_in_dataset": 6,
+    "questions_evaluated": 6,
+    "mrr": 1.0,
+    "precision_at_1": 1.0,
+    "precision_at_3": 0.5,
+    "precision_at_5": 0.3,
+    "evidence_hit_at_1": 1.0,
+    "evidence_hit_at_3": 1.0,
+    "evidence_hit_at_5": 1.0,
+    "hit_rate_at_1": 1.0,
+    "hit_rate_at_3": 1.0,
+    "hit_rate_at_5": 1.0
   },
   "question_results": [
     {
       "id": "Q001",
       "question": "What security setting must employees enable?",
       "answerable": true,
+      "retrieval_metrics_applicable": true,
+      "relevant_anchor": "Employees must enable multi-factor authentication.",
+      "retrieved_chunks": 5,
+      "relevant_ranks": [
+        1,
+        2
+      ],
       "first_relevant_rank": 1,
       "reciprocal_rank": 1.0,
-      "recall_at_1": 1,
-      "recall_at_3": 1,
-      "recall_at_5": 1,
-      "retrieved_chunks": 1
+      "precision_at_1": 1.0,
+      "evidence_hit_at_1": 1,
+      "hit_rate_at_1": 1,
+      "precision_at_3": 0.6666666666666666,
+      "evidence_hit_at_3": 1,
+      "hit_rate_at_3": 1,
+      "precision_at_5": 0.4,
+      "evidence_hit_at_5": 1,
+      "hit_rate_at_5": 1
     },
     {
       "id": "Q002",
       "question": "Can employees share passwords with colleagues?",
       "answerable": true,
+      "retrieval_metrics_applicable": true,
+      "relevant_anchor": "Passwords must never be shared with colleagues.",
+      "retrieved_chunks": 5,
+      "relevant_ranks": [
+        1
+      ],
       "first_relevant_rank": 1,
       "reciprocal_rank": 1.0,
-      "recall_at_1": 1,
-      "recall_at_3": 1,
-      "recall_at_5": 1,
-      "retrieved_chunks": 1
+      "precision_at_1": 1.0,
+      "evidence_hit_at_1": 1,
+      "hit_rate_at_1": 1,
+      "precision_at_3": 0.3333333333333333,
+      "evidence_hit_at_3": 1,
+      "hit_rate_at_3": 1,
+      "precision_at_5": 0.2,
+      "evidence_hit_at_5": 1,
+      "hit_rate_at_5": 1
     },
     {
       "id": "Q003",
       "question": "How many days of paid leave do employees receive per year?",
       "answerable": true,
+      "retrieval_metrics_applicable": true,
+      "relevant_anchor": "Employees receive 20 days of paid leave per year.",
+      "retrieved_chunks": 5,
+      "relevant_ranks": [
+        1
+      ],
       "first_relevant_rank": 1,
       "reciprocal_rank": 1.0,
-      "recall_at_1": 1,
-      "recall_at_3": 1,
-      "recall_at_5": 1,
-      "retrieved_chunks": 1
+      "precision_at_1": 1.0,
+      "evidence_hit_at_1": 1,
+      "hit_rate_at_1": 1,
+      "precision_at_3": 0.3333333333333333,
+      "evidence_hit_at_3": 1,
+      "hit_rate_at_3": 1,
+      "precision_at_5": 0.2,
+      "evidence_hit_at_5": 1,
+      "hit_rate_at_5": 1
     },
     {
       "id": "Q004",
       "question": "Who approves annual leave requests?",
       "answerable": true,
+      "retrieval_metrics_applicable": true,
+      "relevant_anchor": "Annual leave requests must be approved by the employee's manager.",
+      "retrieved_chunks": 5,
+      "relevant_ranks": [
+        1,
+        2
+      ],
       "first_relevant_rank": 1,
       "reciprocal_rank": 1.0,
-      "recall_at_1": 1,
-      "recall_at_3": 1,
-      "recall_at_5": 1,
-      "retrieved_chunks": 1
+      "precision_at_1": 1.0,
+      "evidence_hit_at_1": 1,
+      "hit_rate_at_1": 1,
+      "precision_at_3": 0.6666666666666666,
+      "evidence_hit_at_3": 1,
+      "hit_rate_at_3": 1,
+      "precision_at_5": 0.4,
+      "evidence_hit_at_5": 1,
+      "hit_rate_at_5": 1
     },
     {
       "id": "Q005",
       "question": "What is the company's parental leave policy?",
       "answerable": false,
       "retrieval_metrics_applicable": false,
-      "note": "Evaluate abstention separately in Phase 4.3."
+      "note": "Skipped: no relevant evidence is specified."
     },
     {
       "id": "Q006",
       "question": "What is the company's password-sharing rule?",
       "answerable": true,
+      "retrieval_metrics_applicable": true,
+      "relevant_anchor": "Passwords must never be shared with colleagues.",
+      "retrieved_chunks": 5,
+      "relevant_ranks": [
+        1
+      ],
       "first_relevant_rank": 1,
       "reciprocal_rank": 1.0,
-      "recall_at_1": 1,
-      "recall_at_3": 1,
-      "recall_at_5": 1,
-      "retrieved_chunks": 1
+      "precision_at_1": 1.0,
+      "evidence_hit_at_1": 1,
+      "hit_rate_at_1": 1,
+      "precision_at_3": 0.3333333333333333,
+      "evidence_hit_at_3": 1,
+      "hit_rate_at_3": 1,
+      "precision_at_5": 0.2,
+      "evidence_hit_at_5": 1,
+      "hit_rate_at_5": 1
     },
     {
       "id": "Q007",
       "question": "Does the company specify a parental leave duration?",
       "answerable": false,
       "retrieval_metrics_applicable": false,
-      "note": "Evaluate abstention separately in Phase 4.3."
+      "note": "Skipped: no relevant evidence is specified."
     },
     {
       "id": "Q008",
       "question": "What does the security policy say about authentication?",
       "answerable": true,
+      "retrieval_metrics_applicable": true,
+      "relevant_anchor": "Employees must enable multi-factor authentication.",
+      "retrieved_chunks": 5,
+      "relevant_ranks": [
+        1,
+        2
+      ],
       "first_relevant_rank": 1,
       "reciprocal_rank": 1.0,
-      "recall_at_1": 1,
-      "recall_at_3": 1,
-      "recall_at_5": 1,
-      "retrieved_chunks": 1
+      "precision_at_1": 1.0,
+      "evidence_hit_at_1": 1,
+      "hit_rate_at_1": 1,
+      "precision_at_3": 0.6666666666666666,
+      "evidence_hit_at_3": 1,
+      "hit_rate_at_3": 1,
+      "precision_at_5": 0.4,
+      "evidence_hit_at_5": 1,
+      "hit_rate_at_5": 1
     }
   ]
 }

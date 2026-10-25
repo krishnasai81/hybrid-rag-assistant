@@ -1,0 +1,385 @@
+{
+  "evaluation_type": "Retrieval configuration comparison",
+  "relevance_method": "Case-insensitive exact evidence phrase matching",
+  "note": "Results depend on the quality of manually verified evidence anchors. Hit Rate@K is not full corpus-level Recall@K.",
+  "summary": {
+    "dense_only": {
+      "questions_evaluated": 6,
+      "mrr": 1.0,
+      "precision_at_1": 1.0,
+      "hit_rate_at_1": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "hit_rate_at_3": 1.0,
+      "precision_at_5": 0.20000000000000004,
+      "hit_rate_at_5": 1.0
+    },
+    "bm25_only": {
+      "questions_evaluated": 6,
+      "mrr": 0.875,
+      "precision_at_1": 0.8333333333333334,
+      "hit_rate_at_1": 0.8333333333333334,
+      "precision_at_3": 0.27777777777777773,
+      "hit_rate_at_3": 0.8333333333333334,
+      "precision_at_5": 0.20000000000000004,
+      "hit_rate_at_5": 1.0
+    },
+    "hybrid_rrf": {
+      "questions_evaluated": 6,
+      "mrr": 1.0,
+      "precision_at_1": 1.0,
+      "hit_rate_at_1": 1.0,
+      "precision_at_3": 0.3333333333333333,
+      "hit_rate_at_3": 1.0,
+      "precision_at_5": 0.20000000000000004,
+      "hit_rate_at_5": 1.0
+    },
+    "hybrid_rrf_cross_encoder": {
+      "questions_evaluated": 6,
+      "mrr": 0.9166666666666666,
+      "precision_at_1": 0.8333333333333334,
+      "hit_rate_at_1": 0.8333333333333334,
+      "precision_at_3": 0.3333333333333333,
+      "hit_rate_at_3": 1.0,
+      "precision_at_5": 0.20000000000000004,
+      "hit_rate_at_5": 1.0
+    }
+  },
+  "question_results": [
+    {
+      "id": "Q001",
+      "question": "What security setting must employees enable?",
+      "dense_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "bm25_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf_cross_encoder": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      }
+    },
+    {
+      "id": "Q002",
+      "question": "Can employees share passwords with colleagues?",
+      "dense_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "bm25_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf_cross_encoder": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      }
+    },
+    {
+      "id": "Q003",
+      "question": "How many days of paid leave do employees receive per year?",
+      "dense_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "bm25_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf_cross_encoder": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      }
+    },
+    {
+      "id": "Q004",
+      "question": "Who approves annual leave requests?",
+      "dense_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "bm25_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf_cross_encoder": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      }
+    },
+    {
+      "id": "Q006",
+      "question": "What is the company's password-sharing rule?",
+      "dense_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "bm25_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf_cross_encoder": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      }
+    },
+    {
+      "id": "Q008",
+      "question": "What does the security policy say about authentication?",
+      "dense_only": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "bm25_only": {
+        "first_relevant_rank": 4,
+        "reciprocal_rank": 0.25,
+        "relevant_ranks": [
+          4
+        ],
+        "precision_at_1": 0.0,
+        "hit_rate_at_1": 0,
+        "precision_at_3": 0.0,
+        "hit_rate_at_3": 0,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf": {
+        "first_relevant_rank": 1,
+        "reciprocal_rank": 1.0,
+        "relevant_ranks": [
+          1
+        ],
+        "precision_at_1": 1.0,
+        "hit_rate_at_1": 1,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      },
+      "hybrid_rrf_cross_encoder": {
+        "first_relevant_rank": 2,
+        "reciprocal_rank": 0.5,
+        "relevant_ranks": [
+          2
+        ],
+        "precision_at_1": 0.0,
+        "hit_rate_at_1": 0,
+        "precision_at_3": 0.3333333333333333,
+        "hit_rate_at_3": 1,
+        "precision_at_5": 0.2,
+        "hit_rate_at_5": 1
+      }
+    }
+  ]
+}

@@ -1,60 +1,50 @@
-
 [
   {
     "id": "Q001",
     "question": "What security setting must employees enable?",
-    "expected_answer": "Employees must enable multi-factor authentication.",
-    "relevant_text_contains": "Employees must enable multi-factor authentication.",
-    "answerable": true
+    "answerable": true,
+    "relevant_text_contains": "Employees must enable multi-factor authentication (MFA) on company accounts and supported business applications."
   },
   {
     "id": "Q002",
     "question": "Can employees share passwords with colleagues?",
-    "expected_answer": "Passwords must never be shared with colleagues.",
-    "relevant_text_contains": "Passwords must never be shared with colleagues.",
-    "answerable": true
+    "answerable": true,
+    "relevant_text_contains": "Passwords must never be shared with colleagues."
   },
   {
     "id": "Q003",
     "question": "How many days of paid leave do employees receive per year?",
-    "expected_answer": "Employees receive 20 days of paid leave per year.",
-    "relevant_text_contains": "Employees receive 20 days of paid leave per year.",
-    "answerable": true
+    "answerable": true,
+    "relevant_text_contains": "Full-time employees are eligible for 20 days of paid annual leave per calendar year."
   },
   {
     "id": "Q004",
     "question": "Who approves annual leave requests?",
-    "expected_answer": "The employee's manager must approve annual leave requests.",
-    "relevant_text_contains": "Annual leave requests must be approved by the employee's manager.",
-    "answerable": true
+    "answerable": true,
+    "relevant_text_contains": "The employee's manager approves annual leave requests."
   },
   {
     "id": "Q005",
     "question": "What is the company's parental leave policy?",
-    "expected_answer": "The document does not specify a parental leave policy.",
-    "relevant_text_contains": "",
-    "answerable": false
+    "answerable": false,
+    "relevant_text_contains": ""
   },
   {
     "id": "Q006",
     "question": "What is the company's password-sharing rule?",
-    "expected_answer": "Employees must never share passwords with colleagues.",
-    "relevant_text_contains": "Passwords must never be shared with colleagues.",
-    "answerable": true
+    "answerable": true,
+    "relevant_text_contains": "Passwords must never be shared with colleagues."
   },
   {
     "id": "Q007",
-    "question": "Does the company specify a parental leave duration?",
-    "expected_answer": "The document does not specify a parental leave duration.",
-    "relevant_text_contains": "",
-    "answerable": false
+    "question": "How many weeks of parental leave are provided?",
+    "answerable": false,
+    "relevant_text_contains": ""
   },
   {
     "id": "Q008",
     "question": "What does the security policy say about authentication?",
-    "expected_answer": "Employees must enable multi-factor authentication.",
-    "relevant_text_contains": "Employees must enable multi-factor authentication.",
-    "answerable": true
+    "answerable": true,
+    "relevant_text_contains": "Employees must enable multi-factor authentication (MFA) on company accounts and supported business applications."
   }
 ]
-    

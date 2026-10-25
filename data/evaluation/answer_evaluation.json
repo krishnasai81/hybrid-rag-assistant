@@ -1,0 +1,366 @@
+[
+  {
+    "id": "Q001",
+    "question": "What security setting must employees enable?",
+    "answerable": true,
+    "reference_answer": "",
+    "generated_answer": "Employees must enable multi‑factor authentication (MFA) on company accounts and supported business applications. [1] [2]",
+    "retrieved_contexts": [
+      "Employees must enable multi-factor authentication (MFA) on company accounts and supported business\napplications. Employees should not approve authentication prompts they did not initiate. Suspected\naccount compromise must be reported to the IT or security team promptly.\n3. Password Security\nPasswords must never be shared with colleagues. Each employee is responsible for protecting their\ncredentials and using approved password-management tools where available. If a password may have",
+      "and should not be used as legal or HR guidance.\n1. Purpose and Scope\nThis sample policy describes basic information-security practices and annual-leave procedures for\nemployees of Example Company. It provides test content for document search, retrieval, citation, and\nevaluation workflows.\n2. Multi-Factor Authentication\nEmployees must enable multi-factor authentication (MFA) on company accounts and supported business",
+      "credentials and using approved password-management tools where available. If a password may have\nbeen exposed, the employee should change it and notify the security team.\n4. Annual Paid Leave\nFull-time employees are eligible for 20 days of paid annual leave per calendar year. Leave balances and\nany applicable carry-over rules should be confirmed with Human Resources.\n5. Annual Leave Approval\nEmployees must submit annual-leave requests through the designated process. The employee's manager",
+      "Employees must submit annual-leave requests through the designated process. The employee's manager\napproves annual leave requests. Employees should wait for approval before making plans that depend on\nthe requested leave being granted.\n6. Topics Not Specified in This Sample\nThis sample document does not specify a parental-leave duration or a detailed parental-leave policy. If\nasked about parental leave based only on this document, the answer should state that the information is",
+      "Sample policy document — for RAG evaluation only\nPage 2\nQuestions about account security should be directed to the IT or security team. Questions about leave\nbalances, eligibility, or leave rules should be directed to Human Resources.\nEnd of sample policy document."
+    ],
+    "sources": [
+      {
+        "citation_id": 1,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 2,
+        "text": "Employees must enable multi-factor authentication (MFA) on company accounts and supported business\napplications. Employees should not approve authentication prompts they did not initiate. Suspected\naccount compromise must be reported to the IT or security team promptly.\n3. Password Security\nPasswords must never be shared with colleagues. Each employee is responsible for protecting their\ncredentials and using approved password-management tools where available. If a password may have",
+        "rerank_score": 5.86835241317749
+      },
+      {
+        "citation_id": 2,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 1,
+        "text": "and should not be used as legal or HR guidance.\n1. Purpose and Scope\nThis sample policy describes basic information-security practices and annual-leave procedures for\nemployees of Example Company. It provides test content for document search, retrieval, citation, and\nevaluation workflows.\n2. Multi-Factor Authentication\nEmployees must enable multi-factor authentication (MFA) on company accounts and supported business",
+        "rerank_score": 3.6243038177490234
+      },
+      {
+        "citation_id": 3,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 3,
+        "text": "credentials and using approved password-management tools where available. If a password may have\nbeen exposed, the employee should change it and notify the security team.\n4. Annual Paid Leave\nFull-time employees are eligible for 20 days of paid annual leave per calendar year. Leave balances and\nany applicable carry-over rules should be confirmed with Human Resources.\n5. Annual Leave Approval\nEmployees must submit annual-leave requests through the designated process. The employee's manager",
+        "rerank_score": -3.040555953979492
+      },
+      {
+        "citation_id": 4,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 4,
+        "text": "Employees must submit annual-leave requests through the designated process. The employee's manager\napproves annual leave requests. Employees should wait for approval before making plans that depend on\nthe requested leave being granted.\n6. Topics Not Specified in This Sample\nThis sample document does not specify a parental-leave duration or a detailed parental-leave policy. If\nasked about parental leave based only on this document, the answer should state that the information is",
+        "rerank_score": -7.510593414306641
+      },
+      {
+        "citation_id": 5,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 2,
+        "chunk_index": 0,
+        "text": "Sample policy document — for RAG evaluation only\nPage 2\nQuestions about account security should be directed to the IT or security team. Questions about leave\nbalances, eligibility, or leave rules should be directed to Human Resources.\nEnd of sample policy document.",
+        "rerank_score": -9.21799087524414
+      }
+    ],
+    "verification": {
+      "checks": [
+        {
+          "claim": "Employees must enable multi‑factor authentication (MFA) on company accounts and supported business applications.",
+          "citations": [
+            1,
+            2
+          ],
+          "verdict": "supported",
+          "source_checks": [
+            {
+              "citation": 1,
+              "verdict": "supported",
+              "reason": "The evidence explicitly states that employees must enable MFA on company accounts and supported business applications, directly supporting the claim."
+            },
+            {
+              "citation": 2,
+              "verdict": "supported",
+              "reason": "The evidence explicitly states that employees must enable MFA on company accounts and supported business applications, directly supporting the claim."
+            }
+          ]
+        }
+      ],
+      "invalid_citations": [],
+      "factual_sentence_count": 1,
+      "verified_sentence_count": 1,
+      "citation_coverage": 1.0
+    },
+    "error": null
+  },
+  {
+    "id": "Q002",
+    "question": "Can employees share passwords with colleagues?",
+    "answerable": true,
+    "reference_answer": "",
+    "generated_answer": "Employees are not allowed to share passwords with colleagues; passwords must never be shared. [1]",
+    "retrieved_contexts": [
+      "Employees must enable multi-factor authentication (MFA) on company accounts and supported business\napplications. Employees should not approve authentication prompts they did not initiate. Suspected\naccount compromise must be reported to the IT or security team promptly.\n3. Password Security\nPasswords must never be shared with colleagues. Each employee is responsible for protecting their\ncredentials and using approved password-management tools where available. If a password may have",
+      "credentials and using approved password-management tools where available. If a password may have\nbeen exposed, the employee should change it and notify the security team.\n4. Annual Paid Leave\nFull-time employees are eligible for 20 days of paid annual leave per calendar year. Leave balances and\nany applicable carry-over rules should be confirmed with Human Resources.\n5. Annual Leave Approval\nEmployees must submit annual-leave requests through the designated process. The employee's manager",
+      "and should not be used as legal or HR guidance.\n1. Purpose and Scope\nThis sample policy describes basic information-security practices and annual-leave procedures for\nemployees of Example Company. It provides test content for document search, retrieval, citation, and\nevaluation workflows.\n2. Multi-Factor Authentication\nEmployees must enable multi-factor authentication (MFA) on company accounts and supported business",
+      "Employees must submit annual-leave requests through the designated process. The employee's manager\napproves annual leave requests. Employees should wait for approval before making plans that depend on\nthe requested leave being granted.\n6. Topics Not Specified in This Sample\nThis sample document does not specify a parental-leave duration or a detailed parental-leave policy. If\nasked about parental leave based only on this document, the answer should state that the information is",
+      "Sample policy document — for RAG evaluation only\nPage 2\nQuestions about account security should be directed to the IT or security team. Questions about leave\nbalances, eligibility, or leave rules should be directed to Human Resources.\nEnd of sample policy document."
+    ],
+    "sources": [
+      {
+        "citation_id": 1,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 2,
+        "text": "Employees must enable multi-factor authentication (MFA) on company accounts and supported business\napplications. Employees should not approve authentication prompts they did not initiate. Suspected\naccount compromise must be reported to the IT or security team promptly.\n3. Password Security\nPasswords must never be shared with colleagues. Each employee is responsible for protecting their\ncredentials and using approved password-management tools where available. If a password may have",
+        "rerank_score": 9.025075912475586
+      },
+      {
+        "citation_id": 2,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 3,
+        "text": "credentials and using approved password-management tools where available. If a password may have\nbeen exposed, the employee should change it and notify the security team.\n4. Annual Paid Leave\nFull-time employees are eligible for 20 days of paid annual leave per calendar year. Leave balances and\nany applicable carry-over rules should be confirmed with Human Resources.\n5. Annual Leave Approval\nEmployees must submit annual-leave requests through the designated process. The employee's manager",
+        "rerank_score": -1.5744614601135254
+      },
+      {
+        "citation_id": 3,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 1,
+        "text": "and should not be used as legal or HR guidance.\n1. Purpose and Scope\nThis sample policy describes basic information-security practices and annual-leave procedures for\nemployees of Example Company. It provides test content for document search, retrieval, citation, and\nevaluation workflows.\n2. Multi-Factor Authentication\nEmployees must enable multi-factor authentication (MFA) on company accounts and supported business",
+        "rerank_score": -8.059982299804688
+      },
+      {
+        "citation_id": 4,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 4,
+        "text": "Employees must submit annual-leave requests through the designated process. The employee's manager\napproves annual leave requests. Employees should wait for approval before making plans that depend on\nthe requested leave being granted.\n6. Topics Not Specified in This Sample\nThis sample document does not specify a parental-leave duration or a detailed parental-leave policy. If\nasked about parental leave based only on this document, the answer should state that the information is",
+        "rerank_score": -11.000109672546387
+      },
+      {
+        "citation_id": 5,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 2,
+        "chunk_index": 0,
+        "text": "Sample policy document — for RAG evaluation only\nPage 2\nQuestions about account security should be directed to the IT or security team. Questions about leave\nbalances, eligibility, or leave rules should be directed to Human Resources.\nEnd of sample policy document.",
+        "rerank_score": -11.18343734741211
+      }
+    ],
+    "verification": {
+      "checks": [
+        {
+          "claim": "Employees are not allowed to share passwords with colleagues; passwords must never be shared.",
+          "citations": [
+            1
+          ],
+          "verdict": "supported",
+          "source_checks": [
+            {
+              "citation": 1,
+              "verdict": "supported",
+              "reason": "The evidence explicitly states \"Passwords must never be shared with colleagues,\" which directly supports the claim that employees are not allowed to share passwords with colleagues."
+            }
+          ]
+        }
+      ],
+      "invalid_citations": [],
+      "factual_sentence_count": 1,
+      "verified_sentence_count": 1,
+      "citation_coverage": 1.0
+    },
+    "error": null
+  },
+  {
+    "id": "Q003",
+    "question": "How many days of paid leave do employees receive per year?",
+    "answerable": true,
+    "reference_answer": "",
+    "generated_answer": "Employees receive **20 days of paid annual leave per calendar year**【1】.",
+    "retrieved_contexts": [
+      "credentials and using approved password-management tools where available. If a password may have\nbeen exposed, the employee should change it and notify the security team.\n4. Annual Paid Leave\nFull-time employees are eligible for 20 days of paid annual leave per calendar year. Leave balances and\nany applicable carry-over rules should be confirmed with Human Resources.\n5. Annual Leave Approval\nEmployees must submit annual-leave requests through the designated process. The employee's manager",
+      "Employees must submit annual-leave requests through the designated process. The employee's manager\napproves annual leave requests. Employees should wait for approval before making plans that depend on\nthe requested leave being granted.\n6. Topics Not Specified in This Sample\nThis sample document does not specify a parental-leave duration or a detailed parental-leave policy. If\nasked about parental leave based only on this document, the answer should state that the information is",
+      "and should not be used as legal or HR guidance.\n1. Purpose and Scope\nThis sample policy describes basic information-security practices and annual-leave procedures for\nemployees of Example Company. It provides test content for document search, retrieval, citation, and\nevaluation workflows.\n2. Multi-Factor Authentication\nEmployees must enable multi-factor authentication (MFA) on company accounts and supported business",
+      "Sample policy document — for RAG evaluation only\nPage 2\nQuestions about account security should be directed to the IT or security team. Questions about leave\nbalances, eligibility, or leave rules should be directed to Human Resources.\nEnd of sample policy document.",
+      "not specified in the available policy text rather than inventing a duration.\n7. Reporting and Questions"
+    ],
+    "sources": [
+      {
+        "citation_id": 1,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 3,
+        "text": "credentials and using approved password-management tools where available. If a password may have\nbeen exposed, the employee should change it and notify the security team.\n4. Annual Paid Leave\nFull-time employees are eligible for 20 days of paid annual leave per calendar year. Leave balances and\nany applicable carry-over rules should be confirmed with Human Resources.\n5. Annual Leave Approval\nEmployees must submit annual-leave requests through the designated process. The employee's manager",
+        "rerank_score": 7.960357666015625
+      },
+      {
+        "citation_id": 2,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 4,
+        "text": "Employees must submit annual-leave requests through the designated process. The employee's manager\napproves annual leave requests. Employees should wait for approval before making plans that depend on\nthe requested leave being granted.\n6. Topics Not Specified in This Sample\nThis sample document does not specify a parental-leave duration or a detailed parental-leave policy. If\nasked about parental leave based only on this document, the answer should state that the information is",
+        "rerank_score": -4.53942346572876
+      },
+      {
+        "citation_id": 3,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 1,
+        "text": "and should not be used as legal or HR guidance.\n1. Purpose and Scope\nThis sample policy describes basic information-security practices and annual-leave procedures for\nemployees of Example Company. It provides test content for document search, retrieval, citation, and\nevaluation workflows.\n2. Multi-Factor Authentication\nEmployees must enable multi-factor authentication (MFA) on company accounts and supported business",
+        "rerank_score": -8.706239700317383
+      },
+      {
+        "citation_id": 4,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 2,
+        "chunk_index": 0,
+        "text": "Sample policy document — for RAG evaluation only\nPage 2\nQuestions about account security should be directed to the IT or security team. Questions about leave\nbalances, eligibility, or leave rules should be directed to Human Resources.\nEnd of sample policy document.",
+        "rerank_score": -11.07547378540039
+      },
+      {
+        "citation_id": 5,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 5,
+        "text": "not specified in the available policy text rather than inventing a duration.\n7. Reporting and Questions",
+        "rerank_score": -11.126602172851562
+      }
+    ],
+    "verification": {
+      "checks": [
+        {
+          "claim": "Employees receive **20 days of paid annual leave per calendar year**【1】.",
+          "citations": [],
+          "verdict": "unsupported",
+          "reason": "No citation was provided for this sentence."
+        }
+      ],
+      "invalid_citations": [],
+      "factual_sentence_count": 1,
+      "verified_sentence_count": 0,
+      "citation_coverage": 0.0
+    },
+    "error": null
+  },
+  {
+    "id": "Q004",
+    "question": "Who approves annual leave requests?",
+    "answerable": true,
+    "reference_answer": "",
+    "generated_answer": "Annual leave requests are approved by the employee’s manager. [1] [2]",
+    "retrieved_contexts": [
+      "Employees must submit annual-leave requests through the designated process. The employee's manager\napproves annual leave requests. Employees should wait for approval before making plans that depend on\nthe requested leave being granted.\n6. Topics Not Specified in This Sample\nThis sample document does not specify a parental-leave duration or a detailed parental-leave policy. If\nasked about parental leave based only on this document, the answer should state that the information is",
+      "credentials and using approved password-management tools where available. If a password may have\nbeen exposed, the employee should change it and notify the security team.\n4. Annual Paid Leave\nFull-time employees are eligible for 20 days of paid annual leave per calendar year. Leave balances and\nany applicable carry-over rules should be confirmed with Human Resources.\n5. Annual Leave Approval\nEmployees must submit annual-leave requests through the designated process. The employee's manager",
+      "and should not be used as legal or HR guidance.\n1. Purpose and Scope\nThis sample policy describes basic information-security practices and annual-leave procedures for\nemployees of Example Company. It provides test content for document search, retrieval, citation, and\nevaluation workflows.\n2. Multi-Factor Authentication\nEmployees must enable multi-factor authentication (MFA) on company accounts and supported business",
+      "Sample policy document — for RAG evaluation only\nPage 2\nQuestions about account security should be directed to the IT or security team. Questions about leave\nbalances, eligibility, or leave rules should be directed to Human Resources.\nEnd of sample policy document.",
+      "Employees must enable multi-factor authentication (MFA) on company accounts and supported business\napplications. Employees should not approve authentication prompts they did not initiate. Suspected\naccount compromise must be reported to the IT or security team promptly.\n3. Password Security\nPasswords must never be shared with colleagues. Each employee is responsible for protecting their\ncredentials and using approved password-management tools where available. If a password may have"
+    ],
+    "sources": [
+      {
+        "citation_id": 1,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 4,
+        "text": "Employees must submit annual-leave requests through the designated process. The employee's manager\napproves annual leave requests. Employees should wait for approval before making plans that depend on\nthe requested leave being granted.\n6. Topics Not Specified in This Sample\nThis sample document does not specify a parental-leave duration or a detailed parental-leave policy. If\nasked about parental leave based only on this document, the answer should state that the information is",
+        "rerank_score": 8.653868675231934
+      },
+      {
+        "citation_id": 2,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 3,
+        "text": "credentials and using approved password-management tools where available. If a password may have\nbeen exposed, the employee should change it and notify the security team.\n4. Annual Paid Leave\nFull-time employees are eligible for 20 days of paid annual leave per calendar year. Leave balances and\nany applicable carry-over rules should be confirmed with Human Resources.\n5. Annual Leave Approval\nEmployees must submit annual-leave requests through the designated process. The employee's manager",
+        "rerank_score": 6.131502628326416
+      },
+      {
+        "citation_id": 3,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 1,
+        "text": "and should not be used as legal or HR guidance.\n1. Purpose and Scope\nThis sample policy describes basic information-security practices and annual-leave procedures for\nemployees of Example Company. It provides test content for document search, retrieval, citation, and\nevaluation workflows.\n2. Multi-Factor Authentication\nEmployees must enable multi-factor authentication (MFA) on company accounts and supported business",
+        "rerank_score": -4.097411632537842
+      },
+      {
+        "citation_id": 4,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 2,
+        "chunk_index": 0,
+        "text": "Sample policy document — for RAG evaluation only\nPage 2\nQuestions about account security should be directed to the IT or security team. Questions about leave\nbalances, eligibility, or leave rules should be directed to Human Resources.\nEnd of sample policy document.",
+        "rerank_score": -8.950845718383789
+      },
+      {
+        "citation_id": 5,
+        "source": "79cbf03835084c639936d201004c2ad8_sample_company_policy.pdf",
+        "page": 1,
+        "chunk_index": 2,
+        "text": "Employees must enable multi-factor authentication (MFA) on company accounts and supported business\napplications. Employees should not approve authentication prompts they did not initiate. Suspected\naccount compromise must be reported to the IT or security team promptly.\n3. Password Security\nPasswords must never be shared with colleagues. Each employee is responsible for protecting their\ncredentials and using approved password-management tools where available. If a password may have",
+        "rerank_score": -9.586076736450195
+      }
+    ],
+    "verification": {
+      "checks": [
+        {
+          "claim": "Annual leave requests are approved by the employee’s manager.",
+          "citations": [
+            1,
+            2
+          ],
+          "verdict": "supported",
+          "source_checks": [
+            {
+              "citation": 1,
+              "verdict": "supported",
+              "reason": "Evidence explicitly states that the employee’s manager approves annual leave requests."
+            },
+            {
+              "citation": 2,
+              "verdict": "supported",
+              "reason": "The evidence states that annual leave requests are submitted through a designated process and references the employee’s manager, implying that the manager approves the requests."
+            }
+          ]
+        }
+      ],
+      "invalid_citations": [],
+      "factual_sentence_count": 1,
+      "verified_sentence_count": 1,
+      "citation_coverage": 1.0
+    },
+    "error": null
+  },
+  {
+    "id": "Q005",
+    "question": "What is the company's parental leave policy?",
+    "answerable": false,
+    "reference_answer": "",
+    "generated_answer": "",
+    "retrieved_contexts": [],
+    "sources": [],
+    "verification": {},
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0hr577yevv9h8epe0fpzb8g` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199722, Requested 923. Please try again in 4m38.64s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  },
+  {
+    "id": "Q006",
+    "question": "What is the company's password-sharing rule?",
+    "answerable": true,
+    "reference_answer": "",
+    "generated_answer": "",
+    "retrieved_contexts": [],
+    "sources": [],
+    "verification": {},
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0hr577yevv9h8epe0fpzb8g` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199720, Requested 1001. Please try again in 5m11.472s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  },
+  {
+    "id": "Q007",
+    "question": "How many weeks of parental leave are provided?",
+    "answerable": false,
+    "reference_answer": "",
+    "generated_answer": "",
+    "retrieved_contexts": [],
+    "sources": [],
+    "verification": {},
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0hr577yevv9h8epe0fpzb8g` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199718, Requested 923. Please try again in 4m36.912s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  },
+  {
+    "id": "Q008",
+    "question": "What does the security policy say about authentication?",
+    "answerable": true,
+    "reference_answer": "",
+    "generated_answer": "",
+    "retrieved_contexts": [],
+    "sources": [],
+    "verification": {},
+    "error": "Error code: 429 - {'error': {'message': 'Rate limit reached for model `openai/gpt-oss-20b` in organization `org_01m0hr577yevv9h8epe0fpzb8g` service tier `on_demand` on tokens per day (TPD): Limit 200000, Used 199716, Requested 1002. Please try again in 5m10.176s. Need more tokens? Upgrade to Dev Tier today at https://console.groq.com/settings/billing', 'type': 'tokens', 'code': 'rate_limit_exceeded'}}"
+  }
+]
