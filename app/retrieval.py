@@ -5,12 +5,12 @@ from typing import Any
 
 import numpy as np
 from rank_bm25 import BM25Okapi
-from sentence_transformers import SentenceTransformer, CrossEncoder
+from sentence_transformers import SentenceTransformer
 
 from app.config import EMBEDDING_MODEL
 from app.supabase_client import get_supabase_client
 
-RERANKER_MODEL = "cross-encoder/ms-marco-MiniLM-L-6-v2"
+
 DB_PAGE_SIZE = 500
 
 
@@ -22,10 +22,6 @@ def tokenize(text: str) -> list[str]:
 def get_embedding_model():
     return SentenceTransformer(EMBEDDING_MODEL)
 
-
-@lru_cache(maxsize=1)
-def get_reranker():
-    return CrossEncoder(RERANKER_MODEL, device="cpu")
 
 
 def load_all_chunks() -> list[dict[str, Any]]:
@@ -207,25 +203,12 @@ def reciprocal_rank_fusion(
 
 
 def rerank(question: str, candidates):
-    if not candidates:
-        return []
-
-    model = get_reranker()
-    pairs = [(question, item["text"]) for item in candidates]
-    scores = model.predict(pairs, show_progress_bar=False)
-
-    ranked = []
-    for candidate, score in zip(candidates, scores):
-        item = dict(candidate)
-        item["rerank_score"] = float(score)
-        ranked.append(item)
-
+    """Use RRF ranking without loading a separate ML reranker."""
     return sorted(
-        ranked,
-        key=lambda item: item["rerank_score"],
+        candidates,
+        key=lambda item: item.get("rrf_score", 0.0),
         reverse=True,
     )
-
 
 def retrieve(
     question: str,
@@ -269,4 +252,4 @@ def retrieve(
 def clear_retrieval_caches():
     get_bm25_data.cache_clear()
     get_embedding_model.cache_clear()
-    get_reranker.cache_clear()
+    
